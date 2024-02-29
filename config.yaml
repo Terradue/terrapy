@@ -1,0 +1,5 @@
+generatorName: python
+# inputSpec: https://localhost:5011/core/v2/service.json
+inputSpec: https://api.bios-dev.terradue.com/core/v2/service.json
+additionalProperties:
+  projectName: TerrAPI Python Client
