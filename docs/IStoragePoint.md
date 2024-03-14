@@ -31,7 +31,7 @@ json = "{}"
 # create an instance of IStoragePoint from a JSON string
 i_storage_point_instance = IStoragePoint.from_json(json)
 # print the JSON string representation of the object
-print IStoragePoint.to_json()
+print(IStoragePoint.to_json())
 
 # convert the object into a dict
 i_storage_point_dict = i_storage_point_instance.to_dict()

@@ -21,7 +21,7 @@ json = "{}"
 # create an instance of IStorageSTS from a JSON string
 i_storage_sts_instance = IStorageSTS.from_json(json)
 # print the JSON string representation of the object
-print IStorageSTS.to_json()
+print(IStorageSTS.to_json())
 
 # convert the object into a dict
 i_storage_sts_dict = i_storage_sts_instance.to_dict()

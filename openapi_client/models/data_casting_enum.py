@@ -26,8 +26,8 @@ class DataCastingEnum(str, Enum):
     """
     allowed enum values
     """
-    DEFAULT = 'default'
-    TIMESERIES = 'timeseries'
+    DEFAULT = 'Default'
+    TIMESERIES = 'TimeSeries'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:

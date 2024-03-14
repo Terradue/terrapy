@@ -18,7 +18,7 @@ json = "{}"
 # create an instance of Subject from a JSON string
 subject_instance = Subject.from_json(json)
 # print the JSON string representation of the object
-print Subject.to_json()
+print(Subject.to_json())
 
 # convert the object into a dict
 subject_dict = subject_instance.to_dict()

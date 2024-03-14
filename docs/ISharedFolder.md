@@ -32,7 +32,7 @@ json = "{}"
 # create an instance of ISharedFolder from a JSON string
 i_shared_folder_instance = ISharedFolder.from_json(json)
 # print the JSON string representation of the object
-print ISharedFolder.to_json()
+print(ISharedFolder.to_json())
 
 # convert the object into a dict
 i_shared_folder_dict = i_shared_folder_instance.to_dict()

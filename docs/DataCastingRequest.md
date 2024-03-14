@@ -29,7 +29,7 @@ json = "{}"
 # create an instance of DataCastingRequest from a JSON string
 data_casting_request_instance = DataCastingRequest.from_json(json)
 # print the JSON string representation of the object
-print DataCastingRequest.to_json()
+print(DataCastingRequest.to_json())
 
 # convert the object into a dict
 data_casting_request_dict = data_casting_request_instance.to_dict()

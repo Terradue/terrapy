@@ -20,7 +20,7 @@ json = "{}"
 # create an instance of PrincipalContext from a JSON string
 principal_context_instance = PrincipalContext.from_json(json)
 # print the JSON string representation of the object
-print PrincipalContext.to_json()
+print(PrincipalContext.to_json())
 
 # convert the object into a dict
 principal_context_dict = principal_context_instance.to_dict()

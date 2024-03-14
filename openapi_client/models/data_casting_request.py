@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, Field, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from openapi_client.models.data_casting_enum import DataCastingEnum
@@ -45,11 +45,11 @@ class DataCastingRequest(BaseModel):
     id: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["url", "catalog_id", "workspace_id", "processor_id", "additional_links", "subjects", "collection", "asset_filters", "path", "casting", "depth", "background_job_id", "id"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:

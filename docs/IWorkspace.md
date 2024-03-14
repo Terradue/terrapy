@@ -32,7 +32,7 @@ json = "{}"
 # create an instance of IWorkspace from a JSON string
 i_workspace_instance = IWorkspace.from_json(json)
 # print the JSON string representation of the object
-print IWorkspace.to_json()
+print(IWorkspace.to_json())
 
 # convert the object into a dict
 i_workspace_dict = i_workspace_instance.to_dict()

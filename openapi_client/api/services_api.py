@@ -95,8 +95,8 @@ class ServicesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
             '201': None,
-            '400': "GetJobStatus401Response",
-            '422': "GetJobStatus401Response",
+            '400': "GetCatalogueById401Response",
+            '422': "GetCatalogueById401Response",
             '401': None,
             '403': None,
         }
@@ -167,8 +167,8 @@ class ServicesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
             '201': None,
-            '400': "GetJobStatus401Response",
-            '422': "GetJobStatus401Response",
+            '400': "GetCatalogueById401Response",
+            '422': "GetCatalogueById401Response",
             '401': None,
             '403': None,
         }
@@ -239,8 +239,8 @@ class ServicesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
             '201': None,
-            '400': "GetJobStatus401Response",
-            '422': "GetJobStatus401Response",
+            '400': "GetCatalogueById401Response",
+            '422': "GetCatalogueById401Response",
             '401': None,
             '403': None,
         }
@@ -379,7 +379,7 @@ class ServicesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "GetJobStatus401Response",
+            '400': "GetCatalogueById401Response",
             '401': None,
             '403': None,
         }
@@ -448,7 +448,7 @@ class ServicesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "GetJobStatus401Response",
+            '400': "GetCatalogueById401Response",
             '401': None,
             '403': None,
         }
@@ -517,7 +517,7 @@ class ServicesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "GetJobStatus401Response",
+            '400': "GetCatalogueById401Response",
             '401': None,
             '403': None,
         }
@@ -644,8 +644,8 @@ class ServicesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': None,
-            '400': "GetJobStatus401Response",
-            '422': "GetJobStatus401Response",
+            '400': "GetCatalogueById401Response",
+            '422': "GetCatalogueById401Response",
             '401': None,
             '403': None,
         }
@@ -715,8 +715,8 @@ class ServicesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': None,
-            '400': "GetJobStatus401Response",
-            '422': "GetJobStatus401Response",
+            '400': "GetCatalogueById401Response",
+            '422': "GetCatalogueById401Response",
             '401': None,
             '403': None,
         }
@@ -786,8 +786,8 @@ class ServicesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': None,
-            '400': "GetJobStatus401Response",
-            '422': "GetJobStatus401Response",
+            '400': "GetCatalogueById401Response",
+            '422': "GetCatalogueById401Response",
             '401': None,
             '403': None,
         }

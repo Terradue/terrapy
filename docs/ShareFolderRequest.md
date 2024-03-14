@@ -18,7 +18,7 @@ json = "{}"
 # create an instance of ShareFolderRequest from a JSON string
 share_folder_request_instance = ShareFolderRequest.from_json(json)
 # print the JSON string representation of the object
-print ShareFolderRequest.to_json()
+print(ShareFolderRequest.to_json())
 
 # convert the object into a dict
 share_folder_request_dict = share_folder_request_instance.to_dict()

@@ -23,7 +23,7 @@ json = "{}"
 # create an instance of ImportRequest from a JSON string
 import_request_instance = ImportRequest.from_json(json)
 # print the JSON string representation of the object
-print ImportRequest.to_json()
+print(ImportRequest.to_json())
 
 # convert the object into a dict
 import_request_dict = import_request_instance.to_dict()

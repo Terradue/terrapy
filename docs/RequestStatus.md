@@ -19,7 +19,7 @@ json = "{}"
 # create an instance of RequestStatus from a JSON string
 request_status_instance = RequestStatus.from_json(json)
 # print the JSON string representation of the object
-print RequestStatus.to_json()
+print(RequestStatus.to_json())
 
 # convert the object into a dict
 request_status_dict = request_status_instance.to_dict()

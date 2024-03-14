@@ -18,7 +18,7 @@ json = "{}"
 # create an instance of IResourceStatus from a JSON string
 i_resource_status_instance = IResourceStatus.from_json(json)
 # print the JSON string representation of the object
-print IResourceStatus.to_json()
+print(IResourceStatus.to_json())
 
 # convert the object into a dict
 i_resource_status_dict = i_resource_status_instance.to_dict()

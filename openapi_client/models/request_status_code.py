@@ -26,11 +26,12 @@ class RequestStatusCode(str, Enum):
     """
     allowed enum values
     """
-    SCHEDULED = 'scheduled'
-    PROCESSING = 'processing'
-    COMPLETED = 'completed'
-    CANCELLED = 'cancelled'
-    FAILED = 'failed'
+    SCHEDULED = 'Scheduled'
+    PROCESSING = 'Processing'
+    COMPLETED = 'Completed'
+    CANCELLED = 'Cancelled'
+    FAILED = 'Failed'
+    UNKNOWN = 'Unknown'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:

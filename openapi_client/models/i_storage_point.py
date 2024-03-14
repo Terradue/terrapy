@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, Field, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from openapi_client.models.auth_resource_type import AuthResourceType
@@ -47,11 +47,11 @@ class IStoragePoint(BaseModel):
     var_self: Optional[StrictStr] = Field(default=None, alias="self")
     __properties: ClassVar[List[str]] = ["storageType", "storagePointUri", "serviceUri", "initialized", "remoteId", "resourceServer", "owner", "type", "status", "resource_uris", "scopes", "properties", "platformId", "name", "self"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:

@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **claim_workspace**
-> claim_workspace(workspace_id)
+> IWorkspace claim_workspace(workspace_id)
 
 Claim a workspace
 
@@ -26,6 +26,7 @@ Claim a workspace
 
 ```python
 import openapi_client
+from openapi_client.models.i_workspace import IWorkspace
 from openapi_client.rest import ApiException
 from pprint import pprint
 
@@ -50,7 +51,9 @@ with openapi_client.ApiClient(configuration) as api_client:
 
     try:
         # Claim a workspace
-        api_instance.claim_workspace(workspace_id)
+        api_response = api_instance.claim_workspace(workspace_id)
+        print("The response of StorageApi->claim_workspace:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling StorageApi->claim_workspace: %s\n" % e)
 ```
@@ -66,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**IWorkspace**](IWorkspace.md)
 
 ### Authorization
 
@@ -75,13 +78,14 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, text/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**202** | Accepted |  -  |
+**202** | Workspace claim accepted |  -  |
+**404** | Workspace not found |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 
@@ -161,7 +165,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_workspace_by_id**
-> get_workspace_by_id(workspace_id)
+> IWorkspace get_workspace_by_id(workspace_id)
 
 Get the workspace information for a specific id
 
@@ -171,6 +175,7 @@ Get the workspace information for a specific id
 
 ```python
 import openapi_client
+from openapi_client.models.i_workspace import IWorkspace
 from openapi_client.rest import ApiException
 from pprint import pprint
 
@@ -195,7 +200,9 @@ with openapi_client.ApiClient(configuration) as api_client:
 
     try:
         # Get the workspace information for a specific id
-        api_instance.get_workspace_by_id(workspace_id)
+        api_response = api_instance.get_workspace_by_id(workspace_id)
+        print("The response of StorageApi->get_workspace_by_id:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling StorageApi->get_workspace_by_id: %s\n" % e)
 ```
@@ -211,7 +218,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**IWorkspace**](IWorkspace.md)
 
 ### Authorization
 
@@ -220,15 +227,15 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, text/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
+**200** | Workspace |  -  |
+**404** | Workspace not found |  -  |
 **401** | Unauthorized |  -  |
-**404** | Not Found |  -  |
 **403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -295,14 +302,15 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, text/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Returns the STAC catalog of the imported resources |  -  |
+**201** | Import status |  -  |
 **404** | If the import is not found |  -  |
+**200** | Returns the import status |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 
@@ -413,7 +421,7 @@ with openapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = openapi_client.StorageApi(api_client)
     workspace_id = 'workspace_id_example' # str | Workspace Identifier
-    share_folder_request = openapi_client.ShareFolderRequest() # ShareFolderRequest |  (optional)
+    share_folder_request = openapi_client.ShareFolderRequest() # ShareFolderRequest | Shared folder request (optional)
 
     try:
         # Share a folder from a workspace with users
@@ -432,7 +440,7 @@ with openapi_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workspace_id** | **str**| Workspace Identifier | 
- **share_folder_request** | [**ShareFolderRequest**](ShareFolderRequest.md)|  | [optional] 
+ **share_folder_request** | [**ShareFolderRequest**](ShareFolderRequest.md)| Shared folder request | [optional] 
 
 ### Return type
 
@@ -444,14 +452,15 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: application/json-patch+json; x-api-version=2, application/json; x-api-version=2, text/json; x-api-version=2, application/*+json; x-api-version=2
+ - **Accept**: application/json, text/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | Created |  -  |
+**201** | Shared folder created |  -  |
+**404** | Workspace not found |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 
@@ -535,7 +544,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **v2_storage_token_get**
-> StsResponse v2_storage_token_get(storage_point_id=storage_point_id)
+> StsStorage v2_storage_token_get(storage_point_id=storage_point_id)
 
 Get Credentials for specific storage point (e.g workspace, shared folder...)
 
@@ -547,7 +556,7 @@ Get Credentials for specific storage point (e.g workspace, shared folder...)
 
 ```python
 import openapi_client
-from openapi_client.models.sts_response import StsResponse
+from openapi_client.models.sts_storage import StsStorage
 from openapi_client.rest import ApiException
 from pprint import pprint
 
@@ -590,7 +599,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**StsResponse**](StsResponse.md)
+[**StsStorage**](StsStorage.md)
 
 ### Authorization
 
@@ -613,7 +622,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **v2_storage_workspaces_workspace_id_import_catalog_post**
-> v2_storage_workspaces_workspace_id_import_catalog_post(workspace_id, import_request=import_request)
+> ImportRequest v2_storage_workspaces_workspace_id_import_catalog_post(workspace_id, import_request=import_request)
 
 Import resources from exisiting catalog
 
@@ -651,7 +660,9 @@ with openapi_client.ApiClient(configuration) as api_client:
 
     try:
         # Import resources from exisiting catalog
-        api_instance.v2_storage_workspaces_workspace_id_import_catalog_post(workspace_id, import_request=import_request)
+        api_response = api_instance.v2_storage_workspaces_workspace_id_import_catalog_post(workspace_id, import_request=import_request)
+        print("The response of StorageApi->v2_storage_workspaces_workspace_id_import_catalog_post:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling StorageApi->v2_storage_workspaces_workspace_id_import_catalog_post: %s\n" % e)
 ```
@@ -668,7 +679,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**ImportRequest**](ImportRequest.md)
 
 ### Authorization
 
@@ -677,14 +688,15 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json-patch+json; x-api-version=2, application/json; x-api-version=2, text/json; x-api-version=2, application/*+json; x-api-version=2
- - **Accept**: application/json
+ - **Accept**: application/json, text/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Returns the STAC catalog of the imported resources |  -  |
-**400** | If the import raised an issue |  -  |
+**404** | Workspace not found |  -  |
+**400** | If the import creation raised an issue |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 

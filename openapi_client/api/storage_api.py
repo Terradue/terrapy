@@ -23,7 +23,7 @@ from openapi_client.models.i_shared_folder import ISharedFolder
 from openapi_client.models.i_workspace import IWorkspace
 from openapi_client.models.import_request import ImportRequest
 from openapi_client.models.share_folder_request import ShareFolderRequest
-from openapi_client.models.sts_response import StsResponse
+from openapi_client.models.sts_storage import StsStorage
 
 from openapi_client.api_client import ApiClient, RequestSerialized
 from openapi_client.api_response import ApiResponse
@@ -59,7 +59,7 @@ class StorageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
+    ) -> IWorkspace:
         """Claim a workspace
 
 
@@ -96,8 +96,9 @@ class StorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': None,
-            '401': "GetJobStatus401Response",
+            '202': "IWorkspace",
+            '404': None,
+            '401': None,
             '403': None,
         }
         response_data = self.api_client.call_api(
@@ -127,7 +128,7 @@ class StorageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
+    ) -> ApiResponse[IWorkspace]:
         """Claim a workspace
 
 
@@ -164,8 +165,9 @@ class StorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': None,
-            '401': "GetJobStatus401Response",
+            '202': "IWorkspace",
+            '404': None,
+            '401': None,
             '403': None,
         }
         response_data = self.api_client.call_api(
@@ -232,8 +234,9 @@ class StorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': None,
-            '401': "GetJobStatus401Response",
+            '202': "IWorkspace",
+            '404': None,
+            '401': None,
             '403': None,
         }
         response_data = self.api_client.call_api(
@@ -276,7 +279,8 @@ class StorageApi:
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
             [
-                'application/json'
+                'application/json', 
+                'text/json'
             ]
         )
 
@@ -358,8 +362,8 @@ class StorageApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '401': "GetJobStatus401Response",
-            '404': "GetJobStatus401Response",
+            '401': "GetCatalogueById401Response",
+            '404': "GetCatalogueById401Response",
             '403': None,
         }
         response_data = self.api_client.call_api(
@@ -427,8 +431,8 @@ class StorageApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '401': "GetJobStatus401Response",
-            '404': "GetJobStatus401Response",
+            '401': "GetCatalogueById401Response",
+            '404': "GetCatalogueById401Response",
             '403': None,
         }
         response_data = self.api_client.call_api(
@@ -496,8 +500,8 @@ class StorageApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '401': "GetJobStatus401Response",
-            '404': "GetJobStatus401Response",
+            '401': "GetCatalogueById401Response",
+            '404': "GetCatalogueById401Response",
             '403': None,
         }
         response_data = self.api_client.call_api(
@@ -584,7 +588,7 @@ class StorageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
+    ) -> IWorkspace:
         """Get the workspace information for a specific id
 
 
@@ -621,9 +625,9 @@ class StorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
-            '401': "GetJobStatus401Response",
-            '404': "GetJobStatus401Response",
+            '200': "IWorkspace",
+            '404': None,
+            '401': None,
             '403': None,
         }
         response_data = self.api_client.call_api(
@@ -653,7 +657,7 @@ class StorageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
+    ) -> ApiResponse[IWorkspace]:
         """Get the workspace information for a specific id
 
 
@@ -690,9 +694,9 @@ class StorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
-            '401': "GetJobStatus401Response",
-            '404': "GetJobStatus401Response",
+            '200': "IWorkspace",
+            '404': None,
+            '401': None,
             '403': None,
         }
         response_data = self.api_client.call_api(
@@ -759,9 +763,9 @@ class StorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
-            '401': "GetJobStatus401Response",
-            '404': "GetJobStatus401Response",
+            '200': "IWorkspace",
+            '404': None,
+            '401': None,
             '403': None,
         }
         response_data = self.api_client.call_api(
@@ -804,7 +808,8 @@ class StorageApi:
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
             [
-                'application/json'
+                'application/json', 
+                'text/json'
             ]
         )
 
@@ -886,8 +891,9 @@ class StorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
+            '201': "ImportStatus",
+            '404': None,
             '200': None,
-            '404': "GetJobStatus401Response",
             '401': None,
             '403': None,
         }
@@ -956,8 +962,9 @@ class StorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
+            '201': "ImportStatus",
+            '404': None,
             '200': None,
-            '404': "GetJobStatus401Response",
             '401': None,
             '403': None,
         }
@@ -1026,8 +1033,9 @@ class StorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
+            '201': "ImportStatus",
+            '404': None,
             '200': None,
-            '404': "GetJobStatus401Response",
             '401': None,
             '403': None,
         }
@@ -1071,7 +1079,8 @@ class StorageApi:
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
             [
-                'application/json'
+                'application/json', 
+                'text/json'
             ]
         )
 
@@ -1350,7 +1359,7 @@ class StorageApi:
     def share_folder(
         self,
         workspace_id: Annotated[StrictStr, Field(description="Workspace Identifier")],
-        share_folder_request: Optional[ShareFolderRequest] = None,
+        share_folder_request: Annotated[Optional[ShareFolderRequest], Field(description="Shared folder request")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1369,7 +1378,7 @@ class StorageApi:
 
         :param workspace_id: Workspace Identifier (required)
         :type workspace_id: str
-        :param share_folder_request:
+        :param share_folder_request: Shared folder request
         :type share_folder_request: ShareFolderRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1404,7 +1413,8 @@ class StorageApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "ISharedFolder",
-            '401': "GetJobStatus401Response",
+            '404': None,
+            '401': None,
             '403': None,
         }
         response_data = self.api_client.call_api(
@@ -1422,7 +1432,7 @@ class StorageApi:
     def share_folder_with_http_info(
         self,
         workspace_id: Annotated[StrictStr, Field(description="Workspace Identifier")],
-        share_folder_request: Optional[ShareFolderRequest] = None,
+        share_folder_request: Annotated[Optional[ShareFolderRequest], Field(description="Shared folder request")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1441,7 +1451,7 @@ class StorageApi:
 
         :param workspace_id: Workspace Identifier (required)
         :type workspace_id: str
-        :param share_folder_request:
+        :param share_folder_request: Shared folder request
         :type share_folder_request: ShareFolderRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1476,7 +1486,8 @@ class StorageApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "ISharedFolder",
-            '401': "GetJobStatus401Response",
+            '404': None,
+            '401': None,
             '403': None,
         }
         response_data = self.api_client.call_api(
@@ -1494,7 +1505,7 @@ class StorageApi:
     def share_folder_without_preload_content(
         self,
         workspace_id: Annotated[StrictStr, Field(description="Workspace Identifier")],
-        share_folder_request: Optional[ShareFolderRequest] = None,
+        share_folder_request: Annotated[Optional[ShareFolderRequest], Field(description="Shared folder request")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1513,7 +1524,7 @@ class StorageApi:
 
         :param workspace_id: Workspace Identifier (required)
         :type workspace_id: str
-        :param share_folder_request:
+        :param share_folder_request: Shared folder request
         :type share_folder_request: ShareFolderRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1548,7 +1559,8 @@ class StorageApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "ISharedFolder",
-            '401': "GetJobStatus401Response",
+            '404': None,
+            '401': None,
             '403': None,
         }
         response_data = self.api_client.call_api(
@@ -1594,7 +1606,8 @@ class StorageApi:
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
             [
-                'application/json'
+                'application/json', 
+                'text/json'
             ]
         )
 
@@ -1605,7 +1618,10 @@ class StorageApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/json'
+                        'application/json-patch+json; x-api-version=2', 
+                        'application/json; x-api-version=2', 
+                        'text/json; x-api-version=2', 
+                        'application/*+json; x-api-version=2'
                     ]
                 )
             )
@@ -1695,7 +1711,7 @@ class StorageApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
             '302': None,
-            '401': "GetJobStatus401Response",
+            '401': "GetCatalogueById401Response",
             '403': None,
         }
         response_data = self.api_client.call_api(
@@ -1769,7 +1785,7 @@ class StorageApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
             '302': None,
-            '401': "GetJobStatus401Response",
+            '401': "GetCatalogueById401Response",
             '403': None,
         }
         response_data = self.api_client.call_api(
@@ -1843,7 +1859,7 @@ class StorageApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
             '302': None,
-            '401': "GetJobStatus401Response",
+            '401': "GetCatalogueById401Response",
             '403': None,
         }
         response_data = self.api_client.call_api(
@@ -1937,7 +1953,7 @@ class StorageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> StsResponse:
+    ) -> StsStorage:
         """Get Credentials for specific storage point (e.g workspace, shared folder...)
 
         
@@ -1975,7 +1991,7 @@ class StorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "StsResponse",
+            '200': "StsStorage",
             '401': None,
             '404': None,
             '403': None,
@@ -2007,7 +2023,7 @@ class StorageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[StsResponse]:
+    ) -> ApiResponse[StsStorage]:
         """Get Credentials for specific storage point (e.g workspace, shared folder...)
 
         
@@ -2045,7 +2061,7 @@ class StorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "StsResponse",
+            '200': "StsStorage",
             '401': None,
             '404': None,
             '403': None,
@@ -2115,7 +2131,7 @@ class StorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "StsResponse",
+            '200': "StsStorage",
             '401': None,
             '404': None,
             '403': None,
@@ -2207,7 +2223,7 @@ class StorageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
+    ) -> ImportRequest:
         """Import resources from exisiting catalog
 
         
@@ -2248,8 +2264,9 @@ class StorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': None,
-            '400': "GetJobStatus401Response",
+            '201': "ImportRequest",
+            '404': None,
+            '400': None,
             '401': None,
             '403': None,
         }
@@ -2281,7 +2298,7 @@ class StorageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
+    ) -> ApiResponse[ImportRequest]:
         """Import resources from exisiting catalog
 
         
@@ -2322,8 +2339,9 @@ class StorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': None,
-            '400': "GetJobStatus401Response",
+            '201': "ImportRequest",
+            '404': None,
+            '400': None,
             '401': None,
             '403': None,
         }
@@ -2396,8 +2414,9 @@ class StorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': None,
-            '400': "GetJobStatus401Response",
+            '201': "ImportRequest",
+            '404': None,
+            '400': None,
             '401': None,
             '403': None,
         }
@@ -2444,7 +2463,8 @@ class StorageApi:
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
             [
-                'application/json'
+                'application/json', 
+                'text/json'
             ]
         )
 

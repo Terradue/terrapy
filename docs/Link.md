@@ -20,7 +20,7 @@ json = "{}"
 # create an instance of Link from a JSON string
 link_instance = Link.from_json(json)
 # print the JSON string representation of the object
-print Link.to_json()
+print(Link.to_json())
 
 # convert the object into a dict
 link_dict = link_instance.to_dict()

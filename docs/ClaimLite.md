@@ -18,7 +18,7 @@ json = "{}"
 # create an instance of ClaimLite from a JSON string
 claim_lite_instance = ClaimLite.from_json(json)
 # print the JSON string representation of the object
-print ClaimLite.to_json()
+print(ClaimLite.to_json())
 
 # convert the object into a dict
 claim_lite_dict = claim_lite_instance.to_dict()
