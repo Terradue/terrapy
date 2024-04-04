@@ -1084,7 +1084,6 @@ class InventoryApi:
     @validate_call
     def v2_inventory_catalogues_publish_post(
         self,
-        catalog_id: Optional[StrictStr] = None,
         catalog_publication_request: Optional[CatalogPublicationRequest] = None,
         _request_timeout: Union[
             None,
@@ -1103,8 +1102,6 @@ class InventoryApi:
 
         This endpoint allows to submit a catalog publication request. A publication request triggers a workflow  that performs <see href=\"https://github.com/Terradue/Stars#Documentation\">Stars crawling</see>   and publish collections and items to the specified   <see href=\"/docs/resources/inventory/#catalogs\">catalog of the inventory.</see>
 
-        :param catalog_id:
-        :type catalog_id: str
         :param catalog_publication_request:
         :type catalog_publication_request: CatalogPublicationRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1130,7 +1127,6 @@ class InventoryApi:
         """ # noqa: E501
 
         _param = self._v2_inventory_catalogues_publish_post_serialize(
-            catalog_id=catalog_id,
             catalog_publication_request=catalog_publication_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1159,7 +1155,6 @@ class InventoryApi:
     @validate_call
     def v2_inventory_catalogues_publish_post_with_http_info(
         self,
-        catalog_id: Optional[StrictStr] = None,
         catalog_publication_request: Optional[CatalogPublicationRequest] = None,
         _request_timeout: Union[
             None,
@@ -1178,8 +1173,6 @@ class InventoryApi:
 
         This endpoint allows to submit a catalog publication request. A publication request triggers a workflow  that performs <see href=\"https://github.com/Terradue/Stars#Documentation\">Stars crawling</see>   and publish collections and items to the specified   <see href=\"/docs/resources/inventory/#catalogs\">catalog of the inventory.</see>
 
-        :param catalog_id:
-        :type catalog_id: str
         :param catalog_publication_request:
         :type catalog_publication_request: CatalogPublicationRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1205,7 +1198,6 @@ class InventoryApi:
         """ # noqa: E501
 
         _param = self._v2_inventory_catalogues_publish_post_serialize(
-            catalog_id=catalog_id,
             catalog_publication_request=catalog_publication_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1234,7 +1226,6 @@ class InventoryApi:
     @validate_call
     def v2_inventory_catalogues_publish_post_without_preload_content(
         self,
-        catalog_id: Optional[StrictStr] = None,
         catalog_publication_request: Optional[CatalogPublicationRequest] = None,
         _request_timeout: Union[
             None,
@@ -1253,8 +1244,6 @@ class InventoryApi:
 
         This endpoint allows to submit a catalog publication request. A publication request triggers a workflow  that performs <see href=\"https://github.com/Terradue/Stars#Documentation\">Stars crawling</see>   and publish collections and items to the specified   <see href=\"/docs/resources/inventory/#catalogs\">catalog of the inventory.</see>
 
-        :param catalog_id:
-        :type catalog_id: str
         :param catalog_publication_request:
         :type catalog_publication_request: CatalogPublicationRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1280,7 +1269,6 @@ class InventoryApi:
         """ # noqa: E501
 
         _param = self._v2_inventory_catalogues_publish_post_serialize(
-            catalog_id=catalog_id,
             catalog_publication_request=catalog_publication_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1304,7 +1292,6 @@ class InventoryApi:
 
     def _v2_inventory_catalogues_publish_post_serialize(
         self,
-        catalog_id,
         catalog_publication_request,
         _request_auth,
         _content_type,
@@ -1326,10 +1313,6 @@ class InventoryApi:
 
         # process the path parameters
         # process the query parameters
-        if catalog_id is not None:
-            
-            _query_params.append(('catalogId', catalog_id))
-            
         # process the header parameters
         # process the form parameters
         # process the body parameter

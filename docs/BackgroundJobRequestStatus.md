@@ -5,7 +5,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**identifier** | **str** |  | [optional] [readonly] 
 **status** | [**RequestStatusCode**](RequestStatusCode.md) |  | [optional] 
 **links** | [**List[Link]**](Link.md) |  | [optional] [readonly] 
 

@@ -26,6 +26,7 @@ class RequestStatusCode(str, Enum):
     """
     allowed enum values
     """
+    PENDING = 'Pending'
     SCHEDULED = 'Scheduled'
     PROCESSING = 'Processing'
     COMPLETED = 'Completed'

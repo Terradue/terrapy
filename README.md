@@ -102,7 +102,9 @@ Class | Method | HTTP request | Description
 *ServicesApi* | [**get_data_casting_status_async**](docs/ServicesApi.md#get_data_casting_status_async) | **GET** /v2/services/datacast/casts/{castId} | Get the status of a casting request
 *ServicesApi* | [**post_data_casting**](docs/ServicesApi.md#post_data_casting) | **POST** /v2/services/datacast/cast | Request casting for a generic data resource
 *StorageApi* | [**claim_workspace**](docs/StorageApi.md#claim_workspace) | **POST** /v2/storage/workspaces/{workspaceId}/claim | Claim a workspace
+*StorageApi* | [**delete_shared_folder_by_id**](docs/StorageApi.md#delete_shared_folder_by_id) | **DELETE** /v2/storage/sharedfolders/{sharedFolderId} | 
 *StorageApi* | [**get_shared_folder_by_id**](docs/StorageApi.md#get_shared_folder_by_id) | **GET** /v2/storage/sharedfolders/{sharedFolderId} | Get the shared folder information for a specific id
+*StorageApi* | [**get_shared_folders**](docs/StorageApi.md#get_shared_folders) | **GET** /v2/storage/sharedfolders | Get all the workspaces information related to an authenticated user
 *StorageApi* | [**get_workspace_by_id**](docs/StorageApi.md#get_workspace_by_id) | **GET** /v2/storage/workspaces/{workspaceId} | Get the workspace information for a specific id
 *StorageApi* | [**get_workspace_import_status**](docs/StorageApi.md#get_workspace_import_status) | **GET** /v2/storage/workspaces/imports/{importId} | Get Status of an import
 *StorageApi* | [**get_workspaces**](docs/StorageApi.md#get_workspaces) | **GET** /v2/storage/workspaces | Get all the workspaces information related to an authenticated user
@@ -147,6 +149,7 @@ Class | Method | HTTP request | Description
  - [PublicationStatus](docs/PublicationStatus.md)
  - [RequestStatus](docs/RequestStatus.md)
  - [RequestStatusCode](docs/RequestStatusCode.md)
+ - [ResourceDeletionTask](docs/ResourceDeletionTask.md)
  - [ResourceStatusCode](docs/ResourceStatusCode.md)
  - [ResourceType](docs/ResourceType.md)
  - [ShareFolderRequest](docs/ShareFolderRequest.md)

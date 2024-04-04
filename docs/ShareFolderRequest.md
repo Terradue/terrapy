@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **path** | **str** |  | [optional] 
 **users** | **List[str]** |  | [optional] 
+**groups** | **List[str]** |  | [optional] 
 
 ## Example
 

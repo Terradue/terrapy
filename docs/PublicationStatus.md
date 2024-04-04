@@ -6,7 +6,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **request** | [**IPublicationRequest**](IPublicationRequest.md) |  | [optional] 
-**identifier** | **str** |  | [optional] [readonly] 
 **status** | [**RequestStatusCode**](RequestStatusCode.md) |  | [optional] 
 **links** | [**List[Link]**](Link.md) |  | [optional] [readonly] 
 

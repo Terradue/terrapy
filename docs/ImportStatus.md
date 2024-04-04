@@ -6,7 +6,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **request** | [**ImportRequest**](ImportRequest.md) |  | [optional] 
-**identifier** | **str** |  | [optional] [readonly] 
 **status** | [**RequestStatusCode**](RequestStatusCode.md) |  | [optional] 
 **links** | [**List[Link]**](Link.md) |  | [optional] [readonly] 
 

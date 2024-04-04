@@ -28,7 +28,8 @@ class ShareFolderRequest(BaseModel):
     """ # noqa: E501
     path: Optional[StrictStr] = None
     users: Optional[List[StrictStr]] = None
-    __properties: ClassVar[List[str]] = ["path", "users"]
+    groups: Optional[List[StrictStr]] = None
+    __properties: ClassVar[List[str]] = ["path", "users", "groups"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -79,6 +80,11 @@ class ShareFolderRequest(BaseModel):
         if self.users is None and "users" in self.model_fields_set:
             _dict['users'] = None
 
+        # set to None if groups (nullable) is None
+        # and model_fields_set contains the field
+        if self.groups is None and "groups" in self.model_fields_set:
+            _dict['groups'] = None
+
         return _dict
 
     @classmethod
@@ -92,7 +98,8 @@ class ShareFolderRequest(BaseModel):
 
         _obj = cls.model_validate({
             "path": obj.get("path"),
-            "users": obj.get("users")
+            "users": obj.get("users"),
+            "groups": obj.get("groups")
         })
         return _obj
 

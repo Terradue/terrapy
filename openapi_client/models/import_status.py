@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
 from openapi_client.models.import_request import ImportRequest
 from openapi_client.models.link import Link
@@ -30,10 +30,9 @@ class ImportStatus(BaseModel):
     ImportStatus
     """ # noqa: E501
     request: Optional[ImportRequest] = None
-    identifier: Optional[StrictStr] = None
     status: Optional[RequestStatusCode] = None
     links: Optional[List[Link]] = None
-    __properties: ClassVar[List[str]] = ["identifier", "status", "links"]
+    __properties: ClassVar[List[str]] = ["status", "links"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -66,10 +65,8 @@ class ImportStatus(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
-            "identifier",
             "links",
         ])
 
@@ -85,11 +82,6 @@ class ImportStatus(BaseModel):
                 if _item:
                     _items.append(_item.to_dict())
             _dict['links'] = _items
-        # set to None if identifier (nullable) is None
-        # and model_fields_set contains the field
-        if self.identifier is None and "identifier" in self.model_fields_set:
-            _dict['identifier'] = None
-
         # set to None if links (nullable) is None
         # and model_fields_set contains the field
         if self.links is None and "links" in self.model_fields_set:
@@ -107,7 +99,6 @@ class ImportStatus(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "identifier": obj.get("identifier"),
             "status": obj.get("status"),
             "links": [Link.from_dict(_item) for _item in obj["links"]] if obj.get("links") is not None else None
         })

@@ -66,6 +66,7 @@ from openapi_client.models.publication_request import PublicationRequest
 from openapi_client.models.publication_status import PublicationStatus
 from openapi_client.models.request_status import RequestStatus
 from openapi_client.models.request_status_code import RequestStatusCode
+from openapi_client.models.resource_deletion_task import ResourceDeletionTask
 from openapi_client.models.resource_status_code import ResourceStatusCode
 from openapi_client.models.resource_type import ResourceType
 from openapi_client.models.share_folder_request import ShareFolderRequest

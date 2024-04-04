@@ -304,7 +304,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **v2_inventory_catalogues_publish_post**
-> PublicationRequest v2_inventory_catalogues_publish_post(catalog_id=catalog_id, catalog_publication_request=catalog_publication_request)
+> PublicationRequest v2_inventory_catalogues_publish_post(catalog_publication_request=catalog_publication_request)
 
 Submit a catalog publication request
 
@@ -338,12 +338,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with openapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = openapi_client.InventoryApi(api_client)
-    catalog_id = 'catalog_id_example' # str |  (optional)
     catalog_publication_request = openapi_client.CatalogPublicationRequest() # CatalogPublicationRequest |  (optional)
 
     try:
         # Submit a catalog publication request
-        api_response = api_instance.v2_inventory_catalogues_publish_post(catalog_id=catalog_id, catalog_publication_request=catalog_publication_request)
+        api_response = api_instance.v2_inventory_catalogues_publish_post(catalog_publication_request=catalog_publication_request)
         print("The response of InventoryApi->v2_inventory_catalogues_publish_post:\n")
         pprint(api_response)
     except Exception as e:
@@ -357,7 +356,6 @@ with openapi_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **catalog_id** | **str**|  | [optional] 
  **catalog_publication_request** | [**CatalogPublicationRequest**](CatalogPublicationRequest.md)|  | [optional] 
 
 ### Return type

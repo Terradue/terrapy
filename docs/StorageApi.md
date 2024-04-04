@@ -5,7 +5,9 @@ All URIs are relative to *https://api.bios-dev.terradue.com/core*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**claim_workspace**](StorageApi.md#claim_workspace) | **POST** /v2/storage/workspaces/{workspaceId}/claim | Claim a workspace
+[**delete_shared_folder_by_id**](StorageApi.md#delete_shared_folder_by_id) | **DELETE** /v2/storage/sharedfolders/{sharedFolderId} | 
 [**get_shared_folder_by_id**](StorageApi.md#get_shared_folder_by_id) | **GET** /v2/storage/sharedfolders/{sharedFolderId} | Get the shared folder information for a specific id
+[**get_shared_folders**](StorageApi.md#get_shared_folders) | **GET** /v2/storage/sharedfolders | Get all the workspaces information related to an authenticated user
 [**get_workspace_by_id**](StorageApi.md#get_workspace_by_id) | **GET** /v2/storage/workspaces/{workspaceId} | Get the workspace information for a specific id
 [**get_workspace_import_status**](StorageApi.md#get_workspace_import_status) | **GET** /v2/storage/workspaces/imports/{importId} | Get Status of an import
 [**get_workspaces**](StorageApi.md#get_workspaces) | **GET** /v2/storage/workspaces | Get all the workspaces information related to an authenticated user
@@ -91,8 +93,83 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **delete_shared_folder_by_id**
+> ResourceDeletionTask delete_shared_folder_by_id(shared_folder_id)
+
+
+
+### Example
+
+* OAuth Authentication (AccessToken):
+
+```python
+import openapi_client
+from openapi_client.models.resource_deletion_task import ResourceDeletionTask
+from openapi_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.bios-dev.terradue.com/core
+# See configuration.py for a list of all supported configuration parameters.
+configuration = openapi_client.Configuration(
+    host = "https://api.bios-dev.terradue.com/core"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with openapi_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = openapi_client.StorageApi(api_client)
+    shared_folder_id = 'shared_folder_id_example' # str | 
+
+    try:
+        api_response = api_instance.delete_shared_folder_by_id(shared_folder_id)
+        print("The response of StorageApi->delete_shared_folder_by_id:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling StorageApi->delete_shared_folder_by_id: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **shared_folder_id** | **str**|  | 
+
+### Return type
+
+[**ResourceDeletionTask**](ResourceDeletionTask.md)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | Shared Folder deletion task |  -  |
+**401** | Unauthorized |  -  |
+**404** | Shared Folder not found |  -  |
+**403** | Forbidden |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_shared_folder_by_id**
-> get_shared_folder_by_id(shared_folder_id)
+> ISharedFolder get_shared_folder_by_id(shared_folder_id)
 
 Get the shared folder information for a specific id
 
@@ -102,6 +179,7 @@ Get the shared folder information for a specific id
 
 ```python
 import openapi_client
+from openapi_client.models.i_shared_folder import ISharedFolder
 from openapi_client.rest import ApiException
 from pprint import pprint
 
@@ -126,7 +204,9 @@ with openapi_client.ApiClient(configuration) as api_client:
 
     try:
         # Get the shared folder information for a specific id
-        api_instance.get_shared_folder_by_id(shared_folder_id)
+        api_response = api_instance.get_shared_folder_by_id(shared_folder_id)
+        print("The response of StorageApi->get_shared_folder_by_id:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling StorageApi->get_shared_folder_by_id: %s\n" % e)
 ```
@@ -142,7 +222,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**ISharedFolder**](ISharedFolder.md)
 
 ### Authorization
 
@@ -157,9 +237,80 @@ void (empty response body)
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
+**200** | Shared Folder |  -  |
 **401** | Unauthorized |  -  |
-**404** | Not Found |  -  |
+**404** | Shared Folder not found |  -  |
+**403** | Forbidden |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_shared_folders**
+> List[ISharedFolder] get_shared_folders()
+
+Get all the workspaces information related to an authenticated user
+
+### Example
+
+* OAuth Authentication (AccessToken):
+
+```python
+import openapi_client
+from openapi_client.models.i_shared_folder import ISharedFolder
+from openapi_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.bios-dev.terradue.com/core
+# See configuration.py for a list of all supported configuration parameters.
+configuration = openapi_client.Configuration(
+    host = "https://api.bios-dev.terradue.com/core"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with openapi_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = openapi_client.StorageApi(api_client)
+
+    try:
+        # Get all the workspaces information related to an authenticated user
+        api_response = api_instance.get_shared_folders()
+        print("The response of StorageApi->get_shared_folders:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling StorageApi->get_shared_folders: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List[ISharedFolder]**](ISharedFolder.md)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, text/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of shared folders |  -  |
+**401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

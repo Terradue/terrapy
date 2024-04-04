@@ -17,22 +17,18 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict
-from typing import Any, ClassVar, Dict, List, Optional
-from openapi_client.models.i_publication_request import IPublicationRequest
-from openapi_client.models.link import Link
-from openapi_client.models.request_status_code import RequestStatusCode
+from pydantic import BaseModel, ConfigDict, StrictStr
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
-class PublicationStatus(BaseModel):
+class ResourceDeletionTask(BaseModel):
     """
-    PublicationStatus
+    ResourceDeletionTask
     """ # noqa: E501
-    request: Optional[IPublicationRequest] = None
-    status: Optional[RequestStatusCode] = None
-    links: Optional[List[Link]] = None
-    __properties: ClassVar[List[str]] = ["status", "links"]
+    name: StrictStr
+    background_job_id: StrictStr
+    __properties: ClassVar[List[str]] = ["name", "background_job_id"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -52,7 +48,7 @@ class PublicationStatus(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of PublicationStatus from a JSON string"""
+        """Create an instance of ResourceDeletionTask from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -64,10 +60,8 @@ class PublicationStatus(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
-            "links",
         ])
 
         _dict = self.model_dump(
@@ -75,23 +69,11 @@ class PublicationStatus(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in links (list)
-        _items = []
-        if self.links:
-            for _item in self.links:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['links'] = _items
-        # set to None if links (nullable) is None
-        # and model_fields_set contains the field
-        if self.links is None and "links" in self.model_fields_set:
-            _dict['links'] = None
-
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of PublicationStatus from a dict"""
+        """Create an instance of ResourceDeletionTask from a dict"""
         if obj is None:
             return None
 
@@ -99,8 +81,8 @@ class PublicationStatus(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "status": obj.get("status"),
-            "links": [Link.from_dict(_item) for _item in obj["links"]] if obj.get("links") is not None else None
+            "name": obj.get("name"),
+            "background_job_id": obj.get("background_job_id")
         })
         return _obj
 
