@@ -26,10 +26,10 @@ class InventoryType(str, Enum):
     """
     allowed enum values
     """
-    UNKNOWN = 'UNKNOWN'
-    GEOSQUARE = 'Geosquare'
-    STACAPI = 'StacApi'
-    STAC = 'Stac'
+    UNKNOWN = 'unknown'
+    GEOSQUARE = 'geosquare'
+    STAC_MINUS_API = 'stac-api'
+    STAC = 'stac'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:

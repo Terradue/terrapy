@@ -107,5 +107,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_resource_deletion_task.py
 tox.ini

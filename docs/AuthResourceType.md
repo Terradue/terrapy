@@ -1,5 +1,6 @@
 # AuthResourceType
 
+Defines the types of authorization resources.
 
 ## Properties
 

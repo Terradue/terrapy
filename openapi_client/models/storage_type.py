@@ -26,10 +26,10 @@ class StorageType(str, Enum):
     """
     allowed enum values
     """
-    UNKNOWN = 'UNKNOWN'
-    S3 = 'S3'
-    FTP = 'FTP'
-    LOCAL = 'LOCAL'
+    UNKNOWN = 'unknown'
+    S3 = 's3'
+    FTP = 'ftp'
+    LOCAL = 'local'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:

@@ -20,15 +20,15 @@ from typing_extensions import Self
 
 class AuthResourceType(str, Enum):
     """
-    AuthResourceType
+    Defines the types of authorization resources.
     """
 
     """
     allowed enum values
     """
-    STORAGEWORKSPACE = 'StorageWorkspace'
-    STORAGESHAREDFOLDER = 'StorageSharedFolder'
-    INVENTORYCATALOGUE = 'InventoryCatalogue'
+    URN_COLON_RESOURCE_COLON_STORAGE_COLON_WORKSPACE = 'urn:resource:storage:workspace'
+    URN_COLON_RESOURCE_COLON_STORAGE_COLON_SHAREDFOLDER = 'urn:resource:storage:sharedfolder'
+    URN_COLON_RESOURCE_COLON_INVENTORY_COLON_CATALOGUE = 'urn:resource:inventory:catalogue'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
