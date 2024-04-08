@@ -10,11 +10,11 @@ Method | HTTP request | Description
 
 
 # **cast_time_series**
-> cast_time_series(data_casting_request=data_casting_request)
+> str cast_time_series(data_casting_request=data_casting_request)
 
 Request casting for a time series.
 
-Casting a time series includes:  - importing the time series data from the source  - harvesting the time series with the appropriate service (e.g. EGMS, SOS)  - publishing the time series in the catalog
+Casting a time series actually creates 3 tasks and links them:  - importing the generic data from the source as per <seealso cref=\"!:Storage.WorkspaceController.ImportFromUrl(ImportRequest, string, CancellationToken)\"><a href=\"#/Storage/ImportFromUrl\">import operation</a></seealso>  - finding the time series in the imported data  - publishing the generic data in the catalog as per <seealso cref=\"M:TerrApi.Server.Controllers.V2.Inventory.CatalogueController.Publish(TerrApi.Server.Controllers.V2.Inventory.Models.CatalogPublicationRequest,System.Threading.CancellationToken)\"><a href=\"#/Inventory/Publish\">publish operation</a></seealso>
 
 ### Example
 
@@ -43,11 +43,13 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with openapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = openapi_client.ServicesApi(api_client)
-    data_casting_request = openapi_client.DataCastingRequest() # DataCastingRequest |  (optional)
+    data_casting_request = openapi_client.DataCastingRequest() # DataCastingRequest | The request to cast a time series (optional)
 
     try:
         # Request casting for a time series.
-        api_instance.cast_time_series(data_casting_request=data_casting_request)
+        api_response = api_instance.cast_time_series(data_casting_request=data_casting_request)
+        print("The response of ServicesApi->cast_time_series:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling ServicesApi->cast_time_series: %s\n" % e)
 ```
@@ -59,11 +61,11 @@ with openapi_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data_casting_request** | [**DataCastingRequest**](DataCastingRequest.md)|  | [optional] 
+ **data_casting_request** | [**DataCastingRequest**](DataCastingRequest.md)| The request to cast a time series | [optional] 
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -71,17 +73,16 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: application/json-patch+json; x-api-version=2, application/json; x-api-version=2, text/json; x-api-version=2, application/*+json; x-api-version=2
+ - **Accept**: application/json, text/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**201** | Returns the location of the casting task |  -  |
-**400** | If the notification is creating an issue |  -  |
-**422** | If the notification payload is not processable |  -  |
+**201** | The request has been accepted and the cast identifier is returned |  -  |
+**400** | Bad Request |  -  |
+**422** | Client Error |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 
@@ -161,11 +162,11 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_data_casting**
-> post_data_casting(data_casting_request=data_casting_request)
+> str post_data_casting(data_casting_request=data_casting_request)
 
 Request casting for a generic data resource
 
-Casting a generic data results includes:  - importing the generic data from the source  - publishing the generic data in the catalog
+Casting a generic data results actually creates 2 task and link them  - importing the generic data from the source as per <seealso cref=\"M:TerrApi.Server.Controllers.V2.Storage.WorkspaceController.ImportFromUrl(TerrApi.Core.Models.ImportRequest,System.String,System.Threading.CancellationToken)\"><a href=\"#/Storage/ImportFromUrl\">import operation</a></seealso>  - publishing the generic data in the catalog as per <seealso cref=\"M:TerrApi.Server.Controllers.V2.Inventory.CatalogueController.Publish(TerrApi.Server.Controllers.V2.Inventory.Models.CatalogPublicationRequest,System.Threading.CancellationToken)\"><a href=\"#/Inventory/Publish\">publish operation</a></seealso>
 
 ### Example
 
@@ -198,7 +199,9 @@ with openapi_client.ApiClient(configuration) as api_client:
 
     try:
         # Request casting for a generic data resource
-        api_instance.post_data_casting(data_casting_request=data_casting_request)
+        api_response = api_instance.post_data_casting(data_casting_request=data_casting_request)
+        print("The response of ServicesApi->post_data_casting:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling ServicesApi->post_data_casting: %s\n" % e)
 ```
@@ -214,7 +217,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -229,9 +232,9 @@ void (empty response body)
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | Returns the location of the casting task |  -  |
-**400** | If the notification is creating an issue |  -  |
-**422** | If the notification payload is not processable |  -  |
+**201** | A context Id for the casting request |  -  |
+**400** | Bad Request |  -  |
+**422** | Client Error |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 

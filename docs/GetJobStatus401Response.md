@@ -22,7 +22,7 @@ json = "{}"
 # create an instance of GetJobStatus401Response from a JSON string
 get_job_status401_response_instance = GetJobStatus401Response.from_json(json)
 # print the JSON string representation of the object
-print GetJobStatus401Response.to_json()
+print(GetJobStatus401Response.to_json())
 
 # convert the object into a dict
 get_job_status401_response_dict = get_job_status401_response_instance.to_dict()

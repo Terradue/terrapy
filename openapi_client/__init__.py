@@ -44,7 +44,7 @@ from openapi_client.models.content_disposition import ContentDisposition
 from openapi_client.models.content_type import ContentType
 from openapi_client.models.data_casting_enum import DataCastingEnum
 from openapi_client.models.data_casting_request import DataCastingRequest
-from openapi_client.models.get_catalogue_by_id401_response import GetCatalogueById401Response
+from openapi_client.models.get_job_status401_response import GetJobStatus401Response
 from openapi_client.models.http_validation_problem_details import HttpValidationProblemDetails
 from openapi_client.models.i_inventory_catalog import IInventoryCatalog
 from openapi_client.models.i_inventory_point import IInventoryPoint
@@ -55,6 +55,7 @@ from openapi_client.models.i_shared_folder import ISharedFolder
 from openapi_client.models.i_storage_point import IStoragePoint
 from openapi_client.models.i_storage_sts import IStorageSTS
 from openapi_client.models.i_subject import ISubject
+from openapi_client.models.i_translator import ITranslator
 from openapi_client.models.i_workspace import IWorkspace
 from openapi_client.models.import_request import ImportRequest
 from openapi_client.models.import_status import ImportStatus

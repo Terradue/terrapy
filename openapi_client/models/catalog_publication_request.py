@@ -27,14 +27,14 @@ from typing_extensions import Self
 
 class CatalogPublicationRequest(BaseModel):
     """
-    CatalogPublicationRequest
+    Represents a request to publish metadata to a catalog.
     """ # noqa: E501
-    url: Annotated[str, Field(min_length=1, strict=True)]
-    catalog_id: Optional[StrictStr] = None
-    additional_links: Optional[List[Link]] = None
-    subjects: Optional[List[Subject]] = None
-    collection: Optional[StrictStr] = None
-    depth: Optional[StrictInt] = None
+    url: Annotated[str, Field(min_length=1, strict=True)] = Field(description="Gets or sets the source URL of the metadata to publish.  This source must point to a valid metadata document in a supported format.")
+    catalog_id: Optional[StrictStr] = Field(default=None, description="Gets or sets the catalog name where the metadata will be published.")
+    additional_links: Optional[List[Link]] = Field(default=None, description="Gets or sets additional links to include in the metadata document.")
+    subjects: Optional[List[Subject]] = Field(default=None, description="Gets or sets the list of subjects to include in the metadata document.")
+    collection: Optional[StrictStr] = Field(default=None, description="Gets or sets the collection name where the metadata will be published.")
+    depth: Optional[StrictInt] = Field(default=None, description="Gets or sets the depth of the metadata to publish.  0 means no publication, 1 means the root metadata document only, 2 means the metadata document and its children, and so on.")
     __properties: ClassVar[List[str]] = ["url", "catalog_id", "additional_links", "subjects", "collection", "depth"]
 
     model_config = ConfigDict(

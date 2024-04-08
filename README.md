@@ -96,22 +96,23 @@ Class | Method | HTTP request | Description
 *InventoryApi* | [**get_catalogue_by_id**](docs/InventoryApi.md#get_catalogue_by_id) | **GET** /v2/inventory/catalogues/{catalogueId} | Get the catalogue information for a specific id
 *InventoryApi* | [**get_catalogue_publication_status**](docs/InventoryApi.md#get_catalogue_publication_status) | **GET** /v2/inventory/catalogues/publication/{publicationId} | Get Status of an import
 *InventoryApi* | [**get_catalogues**](docs/InventoryApi.md#get_catalogues) | **GET** /v2/inventory/catalogues | Get all the catalogues information related to an authenticated user
-*InventoryApi* | [**v2_inventory_catalogues_publish_post**](docs/InventoryApi.md#v2_inventory_catalogues_publish_post) | **POST** /v2/inventory/catalogues/publish | Submit a catalog publication request
-*InventoryApi* | [**v2_inventory_token_get**](docs/InventoryApi.md#v2_inventory_token_get) | **GET** /v2/inventory/token | Get Credentials for specific inventory point (e.g catalog, collection)
+*InventoryApi* | [**get_inventory_sts**](docs/InventoryApi.md#get_inventory_sts) | **GET** /v2/inventory/token | Get Credentials for specific inventory point (e.g catalog, collection)
+*InventoryApi* | [**get_supported_formats**](docs/InventoryApi.md#get_supported_formats) | **GET** /v2/inventory/formats | Get the supported formats for the inventory point
+*InventoryApi* | [**publish**](docs/InventoryApi.md#publish) | **POST** /v2/inventory/catalogues/publish | Submit a catalog publication request
 *ServicesApi* | [**cast_time_series**](docs/ServicesApi.md#cast_time_series) | **POST** /v2/services/timeseries/cast | Request casting for a time series.
 *ServicesApi* | [**get_data_casting_status_async**](docs/ServicesApi.md#get_data_casting_status_async) | **GET** /v2/services/datacast/casts/{castId} | Get the status of a casting request
 *ServicesApi* | [**post_data_casting**](docs/ServicesApi.md#post_data_casting) | **POST** /v2/services/datacast/cast | Request casting for a generic data resource
 *StorageApi* | [**claim_workspace**](docs/StorageApi.md#claim_workspace) | **POST** /v2/storage/workspaces/{workspaceId}/claim | Claim a workspace
 *StorageApi* | [**delete_shared_folder_by_id**](docs/StorageApi.md#delete_shared_folder_by_id) | **DELETE** /v2/storage/sharedfolders/{sharedFolderId} | 
+*StorageApi* | [**download**](docs/StorageApi.md#download) | **POST** /v2/storage/download | Request a download URL for a given resource
 *StorageApi* | [**get_shared_folder_by_id**](docs/StorageApi.md#get_shared_folder_by_id) | **GET** /v2/storage/sharedfolders/{sharedFolderId} | Get the shared folder information for a specific id
 *StorageApi* | [**get_shared_folders**](docs/StorageApi.md#get_shared_folders) | **GET** /v2/storage/sharedfolders | Get all the workspaces information related to an authenticated user
+*StorageApi* | [**get_storage_sts**](docs/StorageApi.md#get_storage_sts) | **GET** /v2/storage/token | Get Credentials for specific storage point (e.g workspace, shared folder...)
 *StorageApi* | [**get_workspace_by_id**](docs/StorageApi.md#get_workspace_by_id) | **GET** /v2/storage/workspaces/{workspaceId} | Get the workspace information for a specific id
 *StorageApi* | [**get_workspace_import_status**](docs/StorageApi.md#get_workspace_import_status) | **GET** /v2/storage/workspaces/imports/{importId} | Get Status of an import
 *StorageApi* | [**get_workspaces**](docs/StorageApi.md#get_workspaces) | **GET** /v2/storage/workspaces | Get all the workspaces information related to an authenticated user
+*StorageApi* | [**import_from_url**](docs/StorageApi.md#import_from_url) | **POST** /v2/storage/workspaces/{workspaceId}/import-catalog | Import resources from exisiting catalog
 *StorageApi* | [**share_folder**](docs/StorageApi.md#share_folder) | **POST** /v2/storage/workspaces/{workspaceId}/share | Share a folder from a workspace with users
-*StorageApi* | [**v2_storage_download_post**](docs/StorageApi.md#v2_storage_download_post) | **POST** /v2/storage/download | Request a download URL for a given resource
-*StorageApi* | [**v2_storage_token_get**](docs/StorageApi.md#v2_storage_token_get) | **GET** /v2/storage/token | Get Credentials for specific storage point (e.g workspace, shared folder...)
-*StorageApi* | [**v2_storage_workspaces_workspace_id_import_catalog_post**](docs/StorageApi.md#v2_storage_workspaces_workspace_id_import_catalog_post) | **POST** /v2/storage/workspaces/{workspaceId}/import-catalog | Import resources from exisiting catalog
 *UserApi* | [**v2_user_info_get**](docs/UserApi.md#v2_user_info_get) | **GET** /v2/user/info | Get the principal user identities from the identity management system
 *UserApi* | [**v2_user_platforms_get**](docs/UserApi.md#v2_user_platforms_get) | **GET** /v2/user/platforms | Get the principal user identities from the identity management system
 
@@ -127,7 +128,7 @@ Class | Method | HTTP request | Description
  - [ContentType](docs/ContentType.md)
  - [DataCastingEnum](docs/DataCastingEnum.md)
  - [DataCastingRequest](docs/DataCastingRequest.md)
- - [GetCatalogueById401Response](docs/GetCatalogueById401Response.md)
+ - [GetJobStatus401Response](docs/GetJobStatus401Response.md)
  - [HttpValidationProblemDetails](docs/HttpValidationProblemDetails.md)
  - [IInventoryCatalog](docs/IInventoryCatalog.md)
  - [IInventoryPoint](docs/IInventoryPoint.md)
@@ -138,6 +139,7 @@ Class | Method | HTTP request | Description
  - [IStoragePoint](docs/IStoragePoint.md)
  - [IStorageSTS](docs/IStorageSTS.md)
  - [ISubject](docs/ISubject.md)
+ - [ITranslator](docs/ITranslator.md)
  - [IWorkspace](docs/IWorkspace.md)
  - [ImportRequest](docs/ImportRequest.md)
  - [ImportStatus](docs/ImportStatus.md)

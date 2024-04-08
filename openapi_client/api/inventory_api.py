@@ -21,7 +21,9 @@ from typing import Optional
 from typing_extensions import Annotated
 from openapi_client.models.catalog_publication_request import CatalogPublicationRequest
 from openapi_client.models.i_inventory_catalog import IInventoryCatalog
+from openapi_client.models.i_translator import ITranslator
 from openapi_client.models.publication_request import PublicationRequest
+from openapi_client.models.publication_status import PublicationStatus
 from openapi_client.models.sts_inventory import StsInventory
 
 from openapi_client.api_client import ApiClient, RequestSerialized
@@ -58,9 +60,10 @@ class InventoryApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
+    ) -> IInventoryCatalog:
         """Claim a catalogue
 
+        This endpoint allows to claim a catalogue. Claiming a catalogue means that the user is the owner of the catalogue  and that it request the catalogue to be ready for operations.  According to the catalogue type, the claim operation may have different effects such as creating the index,  creating the collections, etc.
 
         :param catalogue_id: Catalogue Identifier (required)
         :type catalogue_id: str
@@ -95,8 +98,9 @@ class InventoryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': None,
-            '401': "GetCatalogueById401Response",
+            '202': "IInventoryCatalog",
+            '401': None,
+            '404': None,
             '403': None,
         }
         response_data = self.api_client.call_api(
@@ -126,9 +130,10 @@ class InventoryApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
+    ) -> ApiResponse[IInventoryCatalog]:
         """Claim a catalogue
 
+        This endpoint allows to claim a catalogue. Claiming a catalogue means that the user is the owner of the catalogue  and that it request the catalogue to be ready for operations.  According to the catalogue type, the claim operation may have different effects such as creating the index,  creating the collections, etc.
 
         :param catalogue_id: Catalogue Identifier (required)
         :type catalogue_id: str
@@ -163,8 +168,9 @@ class InventoryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': None,
-            '401': "GetCatalogueById401Response",
+            '202': "IInventoryCatalog",
+            '401': None,
+            '404': None,
             '403': None,
         }
         response_data = self.api_client.call_api(
@@ -197,6 +203,7 @@ class InventoryApi:
     ) -> RESTResponseType:
         """Claim a catalogue
 
+        This endpoint allows to claim a catalogue. Claiming a catalogue means that the user is the owner of the catalogue  and that it request the catalogue to be ready for operations.  According to the catalogue type, the claim operation may have different effects such as creating the index,  creating the collections, etc.
 
         :param catalogue_id: Catalogue Identifier (required)
         :type catalogue_id: str
@@ -231,8 +238,9 @@ class InventoryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': None,
-            '401': "GetCatalogueById401Response",
+            '202': "IInventoryCatalog",
+            '401': None,
+            '404': None,
             '403': None,
         }
         response_data = self.api_client.call_api(
@@ -319,7 +327,7 @@ class InventoryApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
+    ) -> IInventoryCatalog:
         """Get the catalogue information for a specific id
 
 
@@ -356,9 +364,9 @@ class InventoryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
-            '401': "GetCatalogueById401Response",
-            '404': "GetCatalogueById401Response",
+            '200': "IInventoryCatalog",
+            '401': None,
+            '404': None,
             '403': None,
         }
         response_data = self.api_client.call_api(
@@ -388,7 +396,7 @@ class InventoryApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
+    ) -> ApiResponse[IInventoryCatalog]:
         """Get the catalogue information for a specific id
 
 
@@ -425,9 +433,9 @@ class InventoryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
-            '401': "GetCatalogueById401Response",
-            '404': "GetCatalogueById401Response",
+            '200': "IInventoryCatalog",
+            '401': None,
+            '404': None,
             '403': None,
         }
         response_data = self.api_client.call_api(
@@ -494,9 +502,9 @@ class InventoryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
-            '401': "GetCatalogueById401Response",
-            '404': "GetCatalogueById401Response",
+            '200': "IInventoryCatalog",
+            '401': None,
+            '404': None,
             '403': None,
         }
         response_data = self.api_client.call_api(
@@ -583,7 +591,7 @@ class InventoryApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
+    ) -> PublicationStatus:
         """Get Status of an import
 
         
@@ -621,8 +629,8 @@ class InventoryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
-            '404': "GetCatalogueById401Response",
+            '200': "PublicationStatus",
+            '404': None,
             '401': None,
             '403': None,
         }
@@ -653,7 +661,7 @@ class InventoryApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
+    ) -> ApiResponse[PublicationStatus]:
         """Get Status of an import
 
         
@@ -691,8 +699,8 @@ class InventoryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
-            '404': "GetCatalogueById401Response",
+            '200': "PublicationStatus",
+            '404': None,
             '401': None,
             '403': None,
         }
@@ -761,8 +769,8 @@ class InventoryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
-            '404': "GetCatalogueById401Response",
+            '200': "PublicationStatus",
+            '404': None,
             '401': None,
             '403': None,
         }
@@ -1082,290 +1090,7 @@ class InventoryApi:
 
 
     @validate_call
-    def v2_inventory_catalogues_publish_post(
-        self,
-        catalog_publication_request: Optional[CatalogPublicationRequest] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PublicationRequest:
-        """Submit a catalog publication request
-
-        This endpoint allows to submit a catalog publication request. A publication request triggers a workflow  that performs <see href=\"https://github.com/Terradue/Stars#Documentation\">Stars crawling</see>   and publish collections and items to the specified   <see href=\"/docs/resources/inventory/#catalogs\">catalog of the inventory.</see>
-
-        :param catalog_publication_request:
-        :type catalog_publication_request: CatalogPublicationRequest
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._v2_inventory_catalogues_publish_post_serialize(
-            catalog_publication_request=catalog_publication_request,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '201': "PublicationRequest",
-            '400': "GetCatalogueById401Response",
-            '422': "GetCatalogueById401Response",
-            '401': None,
-            '403': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def v2_inventory_catalogues_publish_post_with_http_info(
-        self,
-        catalog_publication_request: Optional[CatalogPublicationRequest] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PublicationRequest]:
-        """Submit a catalog publication request
-
-        This endpoint allows to submit a catalog publication request. A publication request triggers a workflow  that performs <see href=\"https://github.com/Terradue/Stars#Documentation\">Stars crawling</see>   and publish collections and items to the specified   <see href=\"/docs/resources/inventory/#catalogs\">catalog of the inventory.</see>
-
-        :param catalog_publication_request:
-        :type catalog_publication_request: CatalogPublicationRequest
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._v2_inventory_catalogues_publish_post_serialize(
-            catalog_publication_request=catalog_publication_request,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '201': "PublicationRequest",
-            '400': "GetCatalogueById401Response",
-            '422': "GetCatalogueById401Response",
-            '401': None,
-            '403': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def v2_inventory_catalogues_publish_post_without_preload_content(
-        self,
-        catalog_publication_request: Optional[CatalogPublicationRequest] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Submit a catalog publication request
-
-        This endpoint allows to submit a catalog publication request. A publication request triggers a workflow  that performs <see href=\"https://github.com/Terradue/Stars#Documentation\">Stars crawling</see>   and publish collections and items to the specified   <see href=\"/docs/resources/inventory/#catalogs\">catalog of the inventory.</see>
-
-        :param catalog_publication_request:
-        :type catalog_publication_request: CatalogPublicationRequest
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._v2_inventory_catalogues_publish_post_serialize(
-            catalog_publication_request=catalog_publication_request,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '201': "PublicationRequest",
-            '400': "GetCatalogueById401Response",
-            '422': "GetCatalogueById401Response",
-            '401': None,
-            '403': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _v2_inventory_catalogues_publish_post_serialize(
-        self,
-        catalog_publication_request,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-        if catalog_publication_request is not None:
-            _body_params = catalog_publication_request
-
-
-        # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            [
-                'application/json'
-            ]
-        )
-
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'AccessToken'
-        ]
-
-        return self.api_client.param_serialize(
-            method='POST',
-            resource_path='/v2/inventory/catalogues/publish',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def v2_inventory_token_get(
+    def get_inventory_sts(
         self,
         inventory_point_id: Optional[StrictStr] = None,
         _request_timeout: Union[
@@ -1409,7 +1134,7 @@ class InventoryApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_inventory_token_get_serialize(
+        _param = self._get_inventory_sts_serialize(
             inventory_point_id=inventory_point_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1435,7 +1160,7 @@ class InventoryApi:
 
 
     @validate_call
-    def v2_inventory_token_get_with_http_info(
+    def get_inventory_sts_with_http_info(
         self,
         inventory_point_id: Optional[StrictStr] = None,
         _request_timeout: Union[
@@ -1479,7 +1204,7 @@ class InventoryApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_inventory_token_get_serialize(
+        _param = self._get_inventory_sts_serialize(
             inventory_point_id=inventory_point_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1505,7 +1230,7 @@ class InventoryApi:
 
 
     @validate_call
-    def v2_inventory_token_get_without_preload_content(
+    def get_inventory_sts_without_preload_content(
         self,
         inventory_point_id: Optional[StrictStr] = None,
         _request_timeout: Union[
@@ -1549,7 +1274,7 @@ class InventoryApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_inventory_token_get_serialize(
+        _param = self._get_inventory_sts_serialize(
             inventory_point_id=inventory_point_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1570,7 +1295,7 @@ class InventoryApi:
         return response_data.response
 
 
-    def _v2_inventory_token_get_serialize(
+    def _get_inventory_sts_serialize(
         self,
         inventory_point_id,
         _request_auth,
@@ -1618,6 +1343,535 @@ class InventoryApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/v2/inventory/token',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def get_supported_formats(
+        self,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> Dict[str, ITranslator]:
+        """Get the supported formats for the inventory point
+
+        
+
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_supported_formats_serialize(
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "Dict[str, ITranslator]",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def get_supported_formats_with_http_info(
+        self,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[Dict[str, ITranslator]]:
+        """Get the supported formats for the inventory point
+
+        
+
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_supported_formats_serialize(
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "Dict[str, ITranslator]",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def get_supported_formats_without_preload_content(
+        self,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Get the supported formats for the inventory point
+
+        
+
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_supported_formats_serialize(
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "Dict[str, ITranslator]",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_supported_formats_serialize(
+        self,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[str, str] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            [
+                'application/json'
+            ]
+        )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/v2/inventory/formats',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def publish(
+        self,
+        catalog_publication_request: Optional[CatalogPublicationRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> PublicationRequest:
+        """Submit a catalog publication request
+
+        This endpoint allows to submit a catalog publication request. A publication request triggers a workflow  that performs <see href=\"https://github.com/Terradue/Stars#Documentation\">Stars crawling</see>   and publish collections and items to the specified   <see href=\"/docs/resources/inventory/#catalogs\">catalog of the inventory.</see>
+
+        :param catalog_publication_request:
+        :type catalog_publication_request: CatalogPublicationRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._publish_serialize(
+            catalog_publication_request=catalog_publication_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "PublicationRequest",
+            '400': None,
+            '422': None,
+            '401': None,
+            '403': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def publish_with_http_info(
+        self,
+        catalog_publication_request: Optional[CatalogPublicationRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[PublicationRequest]:
+        """Submit a catalog publication request
+
+        This endpoint allows to submit a catalog publication request. A publication request triggers a workflow  that performs <see href=\"https://github.com/Terradue/Stars#Documentation\">Stars crawling</see>   and publish collections and items to the specified   <see href=\"/docs/resources/inventory/#catalogs\">catalog of the inventory.</see>
+
+        :param catalog_publication_request:
+        :type catalog_publication_request: CatalogPublicationRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._publish_serialize(
+            catalog_publication_request=catalog_publication_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "PublicationRequest",
+            '400': None,
+            '422': None,
+            '401': None,
+            '403': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def publish_without_preload_content(
+        self,
+        catalog_publication_request: Optional[CatalogPublicationRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Submit a catalog publication request
+
+        This endpoint allows to submit a catalog publication request. A publication request triggers a workflow  that performs <see href=\"https://github.com/Terradue/Stars#Documentation\">Stars crawling</see>   and publish collections and items to the specified   <see href=\"/docs/resources/inventory/#catalogs\">catalog of the inventory.</see>
+
+        :param catalog_publication_request:
+        :type catalog_publication_request: CatalogPublicationRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._publish_serialize(
+            catalog_publication_request=catalog_publication_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "PublicationRequest",
+            '400': None,
+            '422': None,
+            '401': None,
+            '403': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _publish_serialize(
+        self,
+        catalog_publication_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[str, str] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if catalog_publication_request is not None:
+            _body_params = catalog_publication_request
+
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            [
+                'application/json', 
+                'text/json'
+            ]
+        )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json-patch+json; x-api-version=2', 
+                        'application/json; x-api-version=2', 
+                        'text/json; x-api-version=2', 
+                        'application/*+json; x-api-version=2'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'AccessToken'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/v2/inventory/catalogues/publish',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

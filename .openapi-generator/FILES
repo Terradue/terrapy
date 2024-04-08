@@ -13,7 +13,7 @@ docs/ContentType.md
 docs/ControlApi.md
 docs/DataCastingEnum.md
 docs/DataCastingRequest.md
-docs/GetCatalogueById401Response.md
+docs/GetJobStatus401Response.md
 docs/HttpValidationProblemDetails.md
 docs/IInventoryCatalog.md
 docs/IInventoryPoint.md
@@ -24,6 +24,7 @@ docs/ISharedFolder.md
 docs/IStoragePoint.md
 docs/IStorageSTS.md
 docs/ISubject.md
+docs/ITranslator.md
 docs/IWorkspace.md
 docs/ImportRequest.md
 docs/ImportStatus.md
@@ -69,7 +70,7 @@ openapi_client/models/content_disposition.py
 openapi_client/models/content_type.py
 openapi_client/models/data_casting_enum.py
 openapi_client/models/data_casting_request.py
-openapi_client/models/get_catalogue_by_id401_response.py
+openapi_client/models/get_job_status401_response.py
 openapi_client/models/http_validation_problem_details.py
 openapi_client/models/i_inventory_catalog.py
 openapi_client/models/i_inventory_point.py
@@ -80,6 +81,7 @@ openapi_client/models/i_shared_folder.py
 openapi_client/models/i_storage_point.py
 openapi_client/models/i_storage_sts.py
 openapi_client/models/i_subject.py
+openapi_client/models/i_translator.py
 openapi_client/models/i_workspace.py
 openapi_client/models/import_request.py
 openapi_client/models/import_status.py
@@ -107,4 +109,5 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_i_translator.py
 tox.ini

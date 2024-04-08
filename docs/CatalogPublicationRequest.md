@@ -1,16 +1,17 @@
 # CatalogPublicationRequest
 
+Represents a request to publish metadata to a catalog.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**url** | **str** |  | 
-**catalog_id** | **str** |  | [optional] 
-**additional_links** | [**List[Link]**](Link.md) |  | [optional] 
-**subjects** | [**List[Subject]**](Subject.md) |  | [optional] 
-**collection** | **str** |  | [optional] 
-**depth** | **int** |  | [optional] 
+**url** | **str** | Gets or sets the source URL of the metadata to publish.  This source must point to a valid metadata document in a supported format. | 
+**catalog_id** | **str** | Gets or sets the catalog name where the metadata will be published. | [optional] 
+**additional_links** | [**List[Link]**](Link.md) | Gets or sets additional links to include in the metadata document. | [optional] 
+**subjects** | [**List[Subject]**](Subject.md) | Gets or sets the list of subjects to include in the metadata document. | [optional] 
+**collection** | **str** | Gets or sets the collection name where the metadata will be published. | [optional] 
+**depth** | **int** | Gets or sets the depth of the metadata to publish.  0 means no publication, 1 means the root metadata document only, 2 means the metadata document and its children, and so on. | [optional] 
 
 ## Example
 

@@ -332,7 +332,7 @@ class UserApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '401': "GetCatalogueById401Response",
+            '401': "GetJobStatus401Response",
             '403': None,
         }
         response_data = self.api_client.call_api(
@@ -396,7 +396,7 @@ class UserApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '401': "GetCatalogueById401Response",
+            '401': "GetJobStatus401Response",
             '403': None,
         }
         response_data = self.api_client.call_api(
@@ -460,7 +460,7 @@ class UserApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '401': "GetCatalogueById401Response",
+            '401': "GetJobStatus401Response",
             '403': None,
         }
         response_data = self.api_client.call_api(

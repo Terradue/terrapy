@@ -42,7 +42,7 @@ class ServicesApi:
     @validate_call
     def cast_time_series(
         self,
-        data_casting_request: Optional[DataCastingRequest] = None,
+        data_casting_request: Annotated[Optional[DataCastingRequest], Field(description="The request to cast a time series")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -55,12 +55,12 @@ class ServicesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
+    ) -> str:
         """Request casting for a time series.
 
-        Casting a time series includes:  - importing the time series data from the source  - harvesting the time series with the appropriate service (e.g. EGMS, SOS)  - publishing the time series in the catalog
+        Casting a time series actually creates 3 tasks and links them:  - importing the generic data from the source as per <seealso cref=\"!:Storage.WorkspaceController.ImportFromUrl(ImportRequest, string, CancellationToken)\"><a href=\"#/Storage/ImportFromUrl\">import operation</a></seealso>  - finding the time series in the imported data  - publishing the generic data in the catalog as per <seealso cref=\"M:TerrApi.Server.Controllers.V2.Inventory.CatalogueController.Publish(TerrApi.Server.Controllers.V2.Inventory.Models.CatalogPublicationRequest,System.Threading.CancellationToken)\"><a href=\"#/Inventory/Publish\">publish operation</a></seealso>
 
-        :param data_casting_request:
+        :param data_casting_request: The request to cast a time series
         :type data_casting_request: DataCastingRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -93,10 +93,9 @@ class ServicesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
-            '201': None,
-            '400': "GetCatalogueById401Response",
-            '422': "GetCatalogueById401Response",
+            '201': "str",
+            '400': None,
+            '422': None,
             '401': None,
             '403': None,
         }
@@ -114,7 +113,7 @@ class ServicesApi:
     @validate_call
     def cast_time_series_with_http_info(
         self,
-        data_casting_request: Optional[DataCastingRequest] = None,
+        data_casting_request: Annotated[Optional[DataCastingRequest], Field(description="The request to cast a time series")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -127,12 +126,12 @@ class ServicesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
+    ) -> ApiResponse[str]:
         """Request casting for a time series.
 
-        Casting a time series includes:  - importing the time series data from the source  - harvesting the time series with the appropriate service (e.g. EGMS, SOS)  - publishing the time series in the catalog
+        Casting a time series actually creates 3 tasks and links them:  - importing the generic data from the source as per <seealso cref=\"!:Storage.WorkspaceController.ImportFromUrl(ImportRequest, string, CancellationToken)\"><a href=\"#/Storage/ImportFromUrl\">import operation</a></seealso>  - finding the time series in the imported data  - publishing the generic data in the catalog as per <seealso cref=\"M:TerrApi.Server.Controllers.V2.Inventory.CatalogueController.Publish(TerrApi.Server.Controllers.V2.Inventory.Models.CatalogPublicationRequest,System.Threading.CancellationToken)\"><a href=\"#/Inventory/Publish\">publish operation</a></seealso>
 
-        :param data_casting_request:
+        :param data_casting_request: The request to cast a time series
         :type data_casting_request: DataCastingRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -165,10 +164,9 @@ class ServicesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
-            '201': None,
-            '400': "GetCatalogueById401Response",
-            '422': "GetCatalogueById401Response",
+            '201': "str",
+            '400': None,
+            '422': None,
             '401': None,
             '403': None,
         }
@@ -186,7 +184,7 @@ class ServicesApi:
     @validate_call
     def cast_time_series_without_preload_content(
         self,
-        data_casting_request: Optional[DataCastingRequest] = None,
+        data_casting_request: Annotated[Optional[DataCastingRequest], Field(description="The request to cast a time series")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -202,9 +200,9 @@ class ServicesApi:
     ) -> RESTResponseType:
         """Request casting for a time series.
 
-        Casting a time series includes:  - importing the time series data from the source  - harvesting the time series with the appropriate service (e.g. EGMS, SOS)  - publishing the time series in the catalog
+        Casting a time series actually creates 3 tasks and links them:  - importing the generic data from the source as per <seealso cref=\"!:Storage.WorkspaceController.ImportFromUrl(ImportRequest, string, CancellationToken)\"><a href=\"#/Storage/ImportFromUrl\">import operation</a></seealso>  - finding the time series in the imported data  - publishing the generic data in the catalog as per <seealso cref=\"M:TerrApi.Server.Controllers.V2.Inventory.CatalogueController.Publish(TerrApi.Server.Controllers.V2.Inventory.Models.CatalogPublicationRequest,System.Threading.CancellationToken)\"><a href=\"#/Inventory/Publish\">publish operation</a></seealso>
 
-        :param data_casting_request:
+        :param data_casting_request: The request to cast a time series
         :type data_casting_request: DataCastingRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -237,10 +235,9 @@ class ServicesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
-            '201': None,
-            '400': "GetCatalogueById401Response",
-            '422': "GetCatalogueById401Response",
+            '201': "str",
+            '400': None,
+            '422': None,
             '401': None,
             '403': None,
         }
@@ -284,7 +281,8 @@ class ServicesApi:
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
             [
-                'application/json'
+                'application/json', 
+                'text/json'
             ]
         )
 
@@ -295,7 +293,10 @@ class ServicesApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/json'
+                        'application/json-patch+json; x-api-version=2', 
+                        'application/json; x-api-version=2', 
+                        'text/json; x-api-version=2', 
+                        'application/*+json; x-api-version=2'
                     ]
                 )
             )
@@ -379,7 +380,7 @@ class ServicesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "GetCatalogueById401Response",
+            '400': "GetJobStatus401Response",
             '401': None,
             '403': None,
         }
@@ -448,7 +449,7 @@ class ServicesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "GetCatalogueById401Response",
+            '400': "GetJobStatus401Response",
             '401': None,
             '403': None,
         }
@@ -517,7 +518,7 @@ class ServicesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "GetCatalogueById401Response",
+            '400': "GetJobStatus401Response",
             '401': None,
             '403': None,
         }
@@ -605,10 +606,10 @@ class ServicesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
+    ) -> str:
         """Request casting for a generic data resource
 
-        Casting a generic data results includes:  - importing the generic data from the source  - publishing the generic data in the catalog
+        Casting a generic data results actually creates 2 task and link them  - importing the generic data from the source as per <seealso cref=\"M:TerrApi.Server.Controllers.V2.Storage.WorkspaceController.ImportFromUrl(TerrApi.Core.Models.ImportRequest,System.String,System.Threading.CancellationToken)\"><a href=\"#/Storage/ImportFromUrl\">import operation</a></seealso>  - publishing the generic data in the catalog as per <seealso cref=\"M:TerrApi.Server.Controllers.V2.Inventory.CatalogueController.Publish(TerrApi.Server.Controllers.V2.Inventory.Models.CatalogPublicationRequest,System.Threading.CancellationToken)\"><a href=\"#/Inventory/Publish\">publish operation</a></seealso>
 
         :param data_casting_request: The casting request
         :type data_casting_request: DataCastingRequest
@@ -643,9 +644,9 @@ class ServicesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': None,
-            '400': "GetCatalogueById401Response",
-            '422': "GetCatalogueById401Response",
+            '201': "str",
+            '400': "GetJobStatus401Response",
+            '422': "GetJobStatus401Response",
             '401': None,
             '403': None,
         }
@@ -676,10 +677,10 @@ class ServicesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
+    ) -> ApiResponse[str]:
         """Request casting for a generic data resource
 
-        Casting a generic data results includes:  - importing the generic data from the source  - publishing the generic data in the catalog
+        Casting a generic data results actually creates 2 task and link them  - importing the generic data from the source as per <seealso cref=\"M:TerrApi.Server.Controllers.V2.Storage.WorkspaceController.ImportFromUrl(TerrApi.Core.Models.ImportRequest,System.String,System.Threading.CancellationToken)\"><a href=\"#/Storage/ImportFromUrl\">import operation</a></seealso>  - publishing the generic data in the catalog as per <seealso cref=\"M:TerrApi.Server.Controllers.V2.Inventory.CatalogueController.Publish(TerrApi.Server.Controllers.V2.Inventory.Models.CatalogPublicationRequest,System.Threading.CancellationToken)\"><a href=\"#/Inventory/Publish\">publish operation</a></seealso>
 
         :param data_casting_request: The casting request
         :type data_casting_request: DataCastingRequest
@@ -714,9 +715,9 @@ class ServicesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': None,
-            '400': "GetCatalogueById401Response",
-            '422': "GetCatalogueById401Response",
+            '201': "str",
+            '400': "GetJobStatus401Response",
+            '422': "GetJobStatus401Response",
             '401': None,
             '403': None,
         }
@@ -750,7 +751,7 @@ class ServicesApi:
     ) -> RESTResponseType:
         """Request casting for a generic data resource
 
-        Casting a generic data results includes:  - importing the generic data from the source  - publishing the generic data in the catalog
+        Casting a generic data results actually creates 2 task and link them  - importing the generic data from the source as per <seealso cref=\"M:TerrApi.Server.Controllers.V2.Storage.WorkspaceController.ImportFromUrl(TerrApi.Core.Models.ImportRequest,System.String,System.Threading.CancellationToken)\"><a href=\"#/Storage/ImportFromUrl\">import operation</a></seealso>  - publishing the generic data in the catalog as per <seealso cref=\"M:TerrApi.Server.Controllers.V2.Inventory.CatalogueController.Publish(TerrApi.Server.Controllers.V2.Inventory.Models.CatalogPublicationRequest,System.Threading.CancellationToken)\"><a href=\"#/Inventory/Publish\">publish operation</a></seealso>
 
         :param data_casting_request: The casting request
         :type data_casting_request: DataCastingRequest
@@ -785,9 +786,9 @@ class ServicesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': None,
-            '400': "GetCatalogueById401Response",
-            '422': "GetCatalogueById401Response",
+            '201': "str",
+            '400': "GetJobStatus401Response",
+            '422': "GetJobStatus401Response",
             '401': None,
             '403': None,
         }
