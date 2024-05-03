@@ -23,7 +23,7 @@ print(ResourceDeletionTask.to_json())
 # convert the object into a dict
 resource_deletion_task_dict = resource_deletion_task_instance.to_dict()
 # create an instance of ResourceDeletionTask from a dict
-resource_deletion_task_form_dict = resource_deletion_task.from_dict(resource_deletion_task_dict)
+resource_deletion_task_from_dict = ResourceDeletionTask.from_dict(resource_deletion_task_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

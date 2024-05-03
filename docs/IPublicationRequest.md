@@ -29,7 +29,7 @@ print(IPublicationRequest.to_json())
 # convert the object into a dict
 i_publication_request_dict = i_publication_request_instance.to_dict()
 # create an instance of IPublicationRequest from a dict
-i_publication_request_form_dict = i_publication_request.from_dict(i_publication_request_dict)
+i_publication_request_from_dict = IPublicationRequest.from_dict(i_publication_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

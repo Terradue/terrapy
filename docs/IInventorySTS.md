@@ -24,7 +24,7 @@ print(IInventorySTS.to_json())
 # convert the object into a dict
 i_inventory_sts_dict = i_inventory_sts_instance.to_dict()
 # create an instance of IInventorySTS from a dict
-i_inventory_sts_form_dict = i_inventory_sts.from_dict(i_inventory_sts_dict)
+i_inventory_sts_from_dict = IInventorySTS.from_dict(i_inventory_sts_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

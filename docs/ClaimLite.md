@@ -23,7 +23,7 @@ print(ClaimLite.to_json())
 # convert the object into a dict
 claim_lite_dict = claim_lite_instance.to_dict()
 # create an instance of ClaimLite from a dict
-claim_lite_form_dict = claim_lite.from_dict(claim_lite_dict)
+claim_lite_from_dict = ClaimLite.from_dict(claim_lite_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

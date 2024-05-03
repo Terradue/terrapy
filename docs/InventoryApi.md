@@ -246,7 +246,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_catalogues**
-> List[IInventoryCatalog] get_catalogues()
+> List[SelfInfo] get_catalogues()
 
 Get all the catalogues information related to an authenticated user
 
@@ -256,7 +256,7 @@ Get all the catalogues information related to an authenticated user
 
 ```python
 import openapi_client
-from openapi_client.models.i_inventory_catalog import IInventoryCatalog
+from openapi_client.models.self_info import SelfInfo
 from openapi_client.rest import ApiException
 from pprint import pprint
 
@@ -295,7 +295,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**List[IInventoryCatalog]**](IInventoryCatalog.md)
+[**List[SelfInfo]**](SelfInfo.md)
 
 ### Authorization
 

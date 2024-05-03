@@ -25,7 +25,7 @@ print(PrincipalContext.to_json())
 # convert the object into a dict
 principal_context_dict = principal_context_instance.to_dict()
 # create an instance of PrincipalContext from a dict
-principal_context_form_dict = principal_context.from_dict(principal_context_dict)
+principal_context_from_dict = PrincipalContext.from_dict(principal_context_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

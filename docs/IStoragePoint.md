@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **storage_point_uri** | **str** |  | [optional] [readonly] 
 **service_uri** | **str** |  | [optional] [readonly] 
 **initialized** | **bool** |  | [optional] [readonly] 
+**end_point** | **str** |  | [optional] [readonly] 
 **remote_id** | **str** |  | [optional] [readonly] 
 **resource_server** | **str** |  | [optional] [readonly] 
 **owner** | **str** |  | [optional] [readonly] 
@@ -36,7 +37,7 @@ print(IStoragePoint.to_json())
 # convert the object into a dict
 i_storage_point_dict = i_storage_point_instance.to_dict()
 # create an instance of IStoragePoint from a dict
-i_storage_point_form_dict = i_storage_point.from_dict(i_storage_point_dict)
+i_storage_point_from_dict = IStoragePoint.from_dict(i_storage_point_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

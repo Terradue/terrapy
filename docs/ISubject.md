@@ -23,7 +23,7 @@ print(ISubject.to_json())
 # convert the object into a dict
 i_subject_dict = i_subject_instance.to_dict()
 # create an instance of ISubject from a dict
-i_subject_form_dict = i_subject.from_dict(i_subject_dict)
+i_subject_from_dict = ISubject.from_dict(i_subject_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

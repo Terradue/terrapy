@@ -17,12 +17,13 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictBool, StrictStr
-from typing import Optional
+from typing import List, Optional
 from typing_extensions import Annotated
 from openapi_client.models.i_shared_folder import ISharedFolder
 from openapi_client.models.i_workspace import IWorkspace
 from openapi_client.models.import_request import ImportRequest
 from openapi_client.models.resource_deletion_task import ResourceDeletionTask
+from openapi_client.models.self_info import SelfInfo
 from openapi_client.models.share_folder_request import ShareFolderRequest
 from openapi_client.models.sts_storage import StsStorage
 
@@ -265,7 +266,7 @@ class StorageApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
+        _files: Dict[str, Union[str, bytes]] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -530,7 +531,7 @@ class StorageApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
+        _files: Dict[str, Union[str, bytes]] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -810,7 +811,7 @@ class StorageApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
+        _files: Dict[str, Union[str, bytes]] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1080,7 +1081,7 @@ class StorageApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
+        _files: Dict[str, Union[str, bytes]] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1138,7 +1139,7 @@ class StorageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[ISharedFolder]:
+    ) -> List[SelfInfo]:
         """Get all the workspaces information related to an authenticated user
 
 
@@ -1172,7 +1173,7 @@ class StorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[ISharedFolder]",
+            '200': "List[SelfInfo]",
             '401': None,
             '403': None,
         }
@@ -1202,7 +1203,7 @@ class StorageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[ISharedFolder]]:
+    ) -> ApiResponse[List[SelfInfo]]:
         """Get all the workspaces information related to an authenticated user
 
 
@@ -1236,7 +1237,7 @@ class StorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[ISharedFolder]",
+            '200': "List[SelfInfo]",
             '401': None,
             '403': None,
         }
@@ -1300,7 +1301,7 @@ class StorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[ISharedFolder]",
+            '200': "List[SelfInfo]",
             '401': None,
             '403': None,
         }
@@ -1328,7 +1329,7 @@ class StorageApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
+        _files: Dict[str, Union[str, bytes]] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1594,7 +1595,7 @@ class StorageApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
+        _files: Dict[str, Union[str, bytes]] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1860,7 +1861,7 @@ class StorageApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
+        _files: Dict[str, Union[str, bytes]] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -2131,7 +2132,7 @@ class StorageApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
+        _files: Dict[str, Union[str, bytes]] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -2190,7 +2191,7 @@ class StorageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[IWorkspace]:
+    ) -> List[SelfInfo]:
         """Get all the workspaces information related to an authenticated user
 
 
@@ -2224,7 +2225,7 @@ class StorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[IWorkspace]",
+            '200': "List[SelfInfo]",
             '401': None,
             '403': None,
         }
@@ -2254,7 +2255,7 @@ class StorageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[IWorkspace]]:
+    ) -> ApiResponse[List[SelfInfo]]:
         """Get all the workspaces information related to an authenticated user
 
 
@@ -2288,7 +2289,7 @@ class StorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[IWorkspace]",
+            '200': "List[SelfInfo]",
             '401': None,
             '403': None,
         }
@@ -2352,7 +2353,7 @@ class StorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[IWorkspace]",
+            '200': "List[SelfInfo]",
             '401': None,
             '403': None,
         }
@@ -2380,7 +2381,7 @@ class StorageApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
+        _files: Dict[str, Union[str, bytes]] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -2662,7 +2663,7 @@ class StorageApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
+        _files: Dict[str, Union[str, bytes]] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -2958,7 +2959,7 @@ class StorageApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
+        _files: Dict[str, Union[str, bytes]] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

@@ -322,7 +322,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_shared_folders**
-> List[ISharedFolder] get_shared_folders()
+> List[SelfInfo] get_shared_folders()
 
 Get all the workspaces information related to an authenticated user
 
@@ -332,7 +332,7 @@ Get all the workspaces information related to an authenticated user
 
 ```python
 import openapi_client
-from openapi_client.models.i_shared_folder import ISharedFolder
+from openapi_client.models.self_info import SelfInfo
 from openapi_client.rest import ApiException
 from pprint import pprint
 
@@ -371,7 +371,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**List[ISharedFolder]**](ISharedFolder.md)
+[**List[SelfInfo]**](SelfInfo.md)
 
 ### Authorization
 
@@ -623,7 +623,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_workspaces**
-> List[IWorkspace] get_workspaces()
+> List[SelfInfo] get_workspaces()
 
 Get all the workspaces information related to an authenticated user
 
@@ -633,7 +633,7 @@ Get all the workspaces information related to an authenticated user
 
 ```python
 import openapi_client
-from openapi_client.models.i_workspace import IWorkspace
+from openapi_client.models.self_info import SelfInfo
 from openapi_client.rest import ApiException
 from pprint import pprint
 
@@ -672,7 +672,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**List[IWorkspace]**](IWorkspace.md)
+[**List[SelfInfo]**](SelfInfo.md)
 
 ### Authorization
 

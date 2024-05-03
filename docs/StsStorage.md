@@ -24,7 +24,7 @@ print(StsStorage.to_json())
 # convert the object into a dict
 sts_storage_dict = sts_storage_instance.to_dict()
 # create an instance of StsStorage from a dict
-sts_storage_form_dict = sts_storage.from_dict(sts_storage_dict)
+sts_storage_from_dict = StsStorage.from_dict(sts_storage_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -24,7 +24,7 @@ print(PublicationStatus.to_json())
 # convert the object into a dict
 publication_status_dict = publication_status_instance.to_dict()
 # create an instance of PublicationStatus from a dict
-publication_status_form_dict = publication_status.from_dict(publication_status_dict)
+publication_status_from_dict = PublicationStatus.from_dict(publication_status_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

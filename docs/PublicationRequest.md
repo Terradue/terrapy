@@ -33,7 +33,7 @@ print(PublicationRequest.to_json())
 # convert the object into a dict
 publication_request_dict = publication_request_instance.to_dict()
 # create an instance of PublicationRequest from a dict
-publication_request_form_dict = publication_request.from_dict(publication_request_dict)
+publication_request_from_dict = PublicationRequest.from_dict(publication_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

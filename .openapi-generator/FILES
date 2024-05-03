@@ -40,6 +40,7 @@ docs/RequestStatusCode.md
 docs/ResourceDeletionTask.md
 docs/ResourceStatusCode.md
 docs/ResourceType.md
+docs/SelfInfo.md
 docs/ServicesApi.md
 docs/ShareFolderRequest.md
 docs/StorageApi.md
@@ -96,6 +97,7 @@ openapi_client/models/request_status_code.py
 openapi_client/models/resource_deletion_task.py
 openapi_client/models/resource_status_code.py
 openapi_client/models/resource_type.py
+openapi_client/models/self_info.py
 openapi_client/models/share_folder_request.py
 openapi_client/models/storage_type.py
 openapi_client/models/sts_inventory.py
@@ -109,5 +111,5 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_i_translator.py
+test/test_self_info.py
 tox.ini

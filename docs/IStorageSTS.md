@@ -26,7 +26,7 @@ print(IStorageSTS.to_json())
 # convert the object into a dict
 i_storage_sts_dict = i_storage_sts_instance.to_dict()
 # create an instance of IStorageSTS from a dict
-i_storage_sts_form_dict = i_storage_sts.from_dict(i_storage_sts_dict)
+i_storage_sts_from_dict = IStorageSTS.from_dict(i_storage_sts_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

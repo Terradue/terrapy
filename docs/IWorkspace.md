@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **storage_point_uri** | **str** |  | [optional] [readonly] 
 **service_uri** | **str** |  | [optional] [readonly] 
 **initialized** | **bool** |  | [optional] [readonly] 
+**end_point** | **str** |  | [optional] [readonly] 
 **remote_id** | **str** |  | [optional] [readonly] 
 **resource_server** | **str** |  | [optional] [readonly] 
 **owner** | **str** |  | [optional] [readonly] 
@@ -37,7 +38,7 @@ print(IWorkspace.to_json())
 # convert the object into a dict
 i_workspace_dict = i_workspace_instance.to_dict()
 # create an instance of IWorkspace from a dict
-i_workspace_form_dict = i_workspace.from_dict(i_workspace_dict)
+i_workspace_from_dict = IWorkspace.from_dict(i_workspace_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

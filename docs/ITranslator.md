@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **label** | **str** |  | [optional] [readonly] 
+**description** | **str** |  | [optional] [readonly] 
 **priority** | **int** |  | [optional] 
 **key** | **str** |  | [optional] 
 
@@ -24,7 +25,7 @@ print(ITranslator.to_json())
 # convert the object into a dict
 i_translator_dict = i_translator_instance.to_dict()
 # create an instance of ITranslator from a dict
-i_translator_form_dict = i_translator.from_dict(i_translator_dict)
+i_translator_from_dict = ITranslator.from_dict(i_translator_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

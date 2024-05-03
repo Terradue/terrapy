@@ -49,6 +49,7 @@ from openapi_client.models.request_status_code import RequestStatusCode
 from openapi_client.models.resource_deletion_task import ResourceDeletionTask
 from openapi_client.models.resource_status_code import ResourceStatusCode
 from openapi_client.models.resource_type import ResourceType
+from openapi_client.models.self_info import SelfInfo
 from openapi_client.models.share_folder_request import ShareFolderRequest
 from openapi_client.models.storage_type import StorageType
 from openapi_client.models.sts_inventory import StsInventory

@@ -27,7 +27,7 @@ print(HttpValidationProblemDetails.to_json())
 # convert the object into a dict
 http_validation_problem_details_dict = http_validation_problem_details_instance.to_dict()
 # create an instance of HttpValidationProblemDetails from a dict
-http_validation_problem_details_form_dict = http_validation_problem_details.from_dict(http_validation_problem_details_dict)
+http_validation_problem_details_from_dict = HttpValidationProblemDetails.from_dict(http_validation_problem_details_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

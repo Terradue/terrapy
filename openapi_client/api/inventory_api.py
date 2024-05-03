@@ -17,13 +17,14 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictStr
-from typing import Optional
+from typing import Dict, List, Optional
 from typing_extensions import Annotated
 from openapi_client.models.catalog_publication_request import CatalogPublicationRequest
 from openapi_client.models.i_inventory_catalog import IInventoryCatalog
 from openapi_client.models.i_translator import ITranslator
 from openapi_client.models.publication_request import PublicationRequest
 from openapi_client.models.publication_status import PublicationStatus
+from openapi_client.models.self_info import SelfInfo
 from openapi_client.models.sts_inventory import StsInventory
 
 from openapi_client.api_client import ApiClient, RequestSerialized
@@ -268,7 +269,7 @@ class InventoryApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
+        _files: Dict[str, Union[str, bytes]] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -532,7 +533,7 @@ class InventoryApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
+        _files: Dict[str, Union[str, bytes]] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -799,7 +800,7 @@ class InventoryApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
+        _files: Dict[str, Union[str, bytes]] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -857,7 +858,7 @@ class InventoryApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[IInventoryCatalog]:
+    ) -> List[SelfInfo]:
         """Get all the catalogues information related to an authenticated user
 
 
@@ -891,7 +892,7 @@ class InventoryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[IInventoryCatalog]",
+            '200': "List[SelfInfo]",
             '401': None,
             '403': None,
         }
@@ -921,7 +922,7 @@ class InventoryApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[IInventoryCatalog]]:
+    ) -> ApiResponse[List[SelfInfo]]:
         """Get all the catalogues information related to an authenticated user
 
 
@@ -955,7 +956,7 @@ class InventoryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[IInventoryCatalog]",
+            '200': "List[SelfInfo]",
             '401': None,
             '403': None,
         }
@@ -1019,7 +1020,7 @@ class InventoryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[IInventoryCatalog]",
+            '200': "List[SelfInfo]",
             '401': None,
             '403': None,
         }
@@ -1047,7 +1048,7 @@ class InventoryApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
+        _files: Dict[str, Union[str, bytes]] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1313,7 +1314,7 @@ class InventoryApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
+        _files: Dict[str, Union[str, bytes]] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1560,7 +1561,7 @@ class InventoryApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
+        _files: Dict[str, Union[str, bytes]] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1827,7 +1828,7 @@ class InventoryApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
+        _files: Dict[str, Union[str, bytes]] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

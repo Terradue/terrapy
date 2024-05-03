@@ -17,20 +17,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from openapi_client.models.auth_resource_type import AuthResourceType
 from typing import Optional, Set
 from typing_extensions import Self
 
-class ITranslator(BaseModel):
+class SelfInfo(BaseModel):
     """
-    ITranslator
+    SelfInfo
     """ # noqa: E501
-    label: Optional[StrictStr] = None
-    description: Optional[StrictStr] = None
-    priority: Optional[StrictInt] = None
-    key: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["label", "description", "priority", "key"]
+    type: Optional[AuthResourceType] = None
+    name: Optional[StrictStr] = None
+    var_self: Optional[StrictStr] = Field(default=None, alias="self")
+    __properties: ClassVar[List[str]] = ["type", "name", "self"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +50,7 @@ class ITranslator(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ITranslator from a JSON string"""
+        """Create an instance of SelfInfo from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -62,12 +62,8 @@ class ITranslator(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
-            "label",
-            "description",
         ])
 
         _dict = self.model_dump(
@@ -75,26 +71,21 @@ class ITranslator(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if label (nullable) is None
+        # set to None if name (nullable) is None
         # and model_fields_set contains the field
-        if self.label is None and "label" in self.model_fields_set:
-            _dict['label'] = None
+        if self.name is None and "name" in self.model_fields_set:
+            _dict['name'] = None
 
-        # set to None if description (nullable) is None
+        # set to None if var_self (nullable) is None
         # and model_fields_set contains the field
-        if self.description is None and "description" in self.model_fields_set:
-            _dict['description'] = None
-
-        # set to None if key (nullable) is None
-        # and model_fields_set contains the field
-        if self.key is None and "key" in self.model_fields_set:
-            _dict['key'] = None
+        if self.var_self is None and "var_self" in self.model_fields_set:
+            _dict['self'] = None
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ITranslator from a dict"""
+        """Create an instance of SelfInfo from a dict"""
         if obj is None:
             return None
 
@@ -102,10 +93,9 @@ class ITranslator(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "label": obj.get("label"),
-            "description": obj.get("description"),
-            "priority": obj.get("priority"),
-            "key": obj.get("key")
+            "type": obj.get("type"),
+            "name": obj.get("name"),
+            "self": obj.get("self")
         })
         return _obj
 

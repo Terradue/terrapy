@@ -20,7 +20,7 @@ from typing import Any, List, Optional
 from openapi_client.models.http_validation_problem_details import HttpValidationProblemDetails
 from openapi_client.models.problem_details import ProblemDetails
 from pydantic import StrictStr, Field
-from typing import Union, List, Optional, Dict
+from typing import Union, List, Set, Optional, Dict
 from typing_extensions import Literal, Self
 
 GETJOBSTATUS401RESPONSE_ONE_OF_SCHEMAS = ["HttpValidationProblemDetails", "ProblemDetails"]
@@ -34,7 +34,7 @@ class GetJobStatus401Response(BaseModel):
     # data type: HttpValidationProblemDetails
     oneof_schema_2_validator: Optional[HttpValidationProblemDetails] = None
     actual_instance: Optional[Union[HttpValidationProblemDetails, ProblemDetails]] = None
-    one_of_schemas: List[str] = Field(default=Literal["HttpValidationProblemDetails", "ProblemDetails"])
+    one_of_schemas: Set[str] = { "HttpValidationProblemDetails", "ProblemDetails" }
 
     model_config = ConfigDict(
         validate_assignment=True,

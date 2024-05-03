@@ -28,7 +28,7 @@ print(CatalogPublicationRequest.to_json())
 # convert the object into a dict
 catalog_publication_request_dict = catalog_publication_request_instance.to_dict()
 # create an instance of CatalogPublicationRequest from a dict
-catalog_publication_request_form_dict = catalog_publication_request.from_dict(catalog_publication_request_dict)
+catalog_publication_request_from_dict = CatalogPublicationRequest.from_dict(catalog_publication_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

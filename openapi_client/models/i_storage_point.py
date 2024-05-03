@@ -34,6 +34,7 @@ class IStoragePoint(BaseModel):
     storage_point_uri: Optional[StrictStr] = Field(default=None, alias="storagePointUri")
     service_uri: Optional[StrictStr] = Field(default=None, alias="serviceUri")
     initialized: Optional[StrictBool] = None
+    end_point: Optional[StrictStr] = Field(default=None, alias="endPoint")
     remote_id: Optional[StrictStr] = Field(default=None, alias="remoteId")
     resource_server: Optional[StrictStr] = Field(default=None, alias="resourceServer")
     owner: Optional[StrictStr] = None
@@ -45,7 +46,7 @@ class IStoragePoint(BaseModel):
     platform_id: Optional[StrictStr] = Field(default=None, alias="platformId")
     name: Annotated[str, Field(min_length=1, strict=True)]
     var_self: Optional[StrictStr] = Field(default=None, alias="self")
-    __properties: ClassVar[List[str]] = ["storageType", "storagePointUri", "serviceUri", "initialized", "remoteId", "resourceServer", "owner", "type", "status", "resource_uris", "scopes", "properties", "platformId", "name", "self"]
+    __properties: ClassVar[List[str]] = ["storageType", "storagePointUri", "serviceUri", "initialized", "endPoint", "remoteId", "resourceServer", "owner", "type", "status", "resource_uris", "scopes", "properties", "platformId", "name", "self"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -88,11 +89,13 @@ class IStoragePoint(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "storage_point_uri",
             "service_uri",
             "initialized",
+            "end_point",
             "remote_id",
             "resource_server",
             "owner",
@@ -120,6 +123,11 @@ class IStoragePoint(BaseModel):
         # and model_fields_set contains the field
         if self.service_uri is None and "service_uri" in self.model_fields_set:
             _dict['serviceUri'] = None
+
+        # set to None if end_point (nullable) is None
+        # and model_fields_set contains the field
+        if self.end_point is None and "end_point" in self.model_fields_set:
+            _dict['endPoint'] = None
 
         # set to None if remote_id (nullable) is None
         # and model_fields_set contains the field
@@ -167,6 +175,7 @@ class IStoragePoint(BaseModel):
             "storagePointUri": obj.get("storagePointUri"),
             "serviceUri": obj.get("serviceUri"),
             "initialized": obj.get("initialized"),
+            "endPoint": obj.get("endPoint"),
             "remoteId": obj.get("remoteId"),
             "resourceServer": obj.get("resourceServer"),
             "owner": obj.get("owner"),

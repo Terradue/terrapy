@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **storage_point_uri** | **str** |  | [optional] [readonly] 
 **service_uri** | **str** |  | [optional] [readonly] 
 **initialized** | **bool** |  | [optional] [readonly] 
+**end_point** | **str** |  | [optional] [readonly] 
 **remote_id** | **str** |  | [optional] [readonly] 
 **resource_server** | **str** |  | [optional] [readonly] 
 **owner** | **str** |  | [optional] [readonly] 
@@ -37,7 +38,7 @@ print(ISharedFolder.to_json())
 # convert the object into a dict
 i_shared_folder_dict = i_shared_folder_instance.to_dict()
 # create an instance of ISharedFolder from a dict
-i_shared_folder_form_dict = i_shared_folder.from_dict(i_shared_folder_dict)
+i_shared_folder_from_dict = ISharedFolder.from_dict(i_shared_folder_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
