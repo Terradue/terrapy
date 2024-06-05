@@ -35,7 +35,8 @@ class CatalogPublicationRequest(BaseModel):
     subjects: Optional[List[Subject]] = Field(default=None, description="Gets or sets the list of subjects to include in the metadata document.")
     collection: Optional[StrictStr] = Field(default=None, description="Gets or sets the collection name where the metadata will be published.")
     depth: Optional[StrictInt] = Field(default=None, description="Gets or sets the depth of the metadata to publish.  0 means no publication, 1 means the root metadata document only, 2 means the metadata document and its children, and so on.")
-    __properties: ClassVar[List[str]] = ["url", "catalog_id", "additional_links", "subjects", "collection", "depth"]
+    assets_filters: Optional[List[StrictStr]] = None
+    __properties: ClassVar[List[str]] = ["url", "catalog_id", "additional_links", "subjects", "collection", "depth", "assets_filters"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -110,6 +111,11 @@ class CatalogPublicationRequest(BaseModel):
         if self.collection is None and "collection" in self.model_fields_set:
             _dict['collection'] = None
 
+        # set to None if assets_filters (nullable) is None
+        # and model_fields_set contains the field
+        if self.assets_filters is None and "assets_filters" in self.model_fields_set:
+            _dict['assets_filters'] = None
+
         return _dict
 
     @classmethod
@@ -127,7 +133,8 @@ class CatalogPublicationRequest(BaseModel):
             "additional_links": [Link.from_dict(_item) for _item in obj["additional_links"]] if obj.get("additional_links") is not None else None,
             "subjects": [Subject.from_dict(_item) for _item in obj["subjects"]] if obj.get("subjects") is not None else None,
             "collection": obj.get("collection"),
-            "depth": obj.get("depth")
+            "depth": obj.get("depth"),
+            "assets_filters": obj.get("assets_filters")
         })
         return _obj
 

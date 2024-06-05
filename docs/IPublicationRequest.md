@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **subjects** | [**List[ISubject]**](ISubject.md) |  | [optional] [readonly] 
 **collection** | **str** |  | [optional] [readonly] 
 **depth** | **int** |  | [optional] [readonly] 
+**assets_filters** | **List[str]** |  | [optional] [readonly] 
 
 ## Example
 

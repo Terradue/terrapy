@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **publication_link** | [**List[Link]**](Link.md) |  | [optional] 
 **context_id** | **str** |  | [optional] 
 **properties** | **Dict[str, object]** |  | [optional] 
+**assets_filters** | **List[str]** |  | [optional] 
 
 ## Example
 

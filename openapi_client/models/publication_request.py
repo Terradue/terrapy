@@ -42,7 +42,8 @@ class PublicationRequest(BaseModel):
     publication_link: Optional[List[Link]] = None
     context_id: Optional[StrictStr] = None
     properties: Optional[Dict[str, Any]] = None
-    __properties: ClassVar[List[str]] = ["id", "catalog_id", "token", "url", "additional_links", "subjects", "collection", "depth", "background_job_id", "publication_link", "context_id", "properties"]
+    assets_filters: Optional[List[StrictStr]] = None
+    __properties: ClassVar[List[str]] = ["id", "catalog_id", "token", "url", "additional_links", "subjects", "collection", "depth", "background_job_id", "publication_link", "context_id", "properties", "assets_filters"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -147,6 +148,11 @@ class PublicationRequest(BaseModel):
         if self.properties is None and "properties" in self.model_fields_set:
             _dict['properties'] = None
 
+        # set to None if assets_filters (nullable) is None
+        # and model_fields_set contains the field
+        if self.assets_filters is None and "assets_filters" in self.model_fields_set:
+            _dict['assets_filters'] = None
+
         return _dict
 
     @classmethod
@@ -170,7 +176,8 @@ class PublicationRequest(BaseModel):
             "background_job_id": obj.get("background_job_id"),
             "publication_link": [Link.from_dict(_item) for _item in obj["publication_link"]] if obj.get("publication_link") is not None else None,
             "context_id": obj.get("context_id"),
-            "properties": obj.get("properties")
+            "properties": obj.get("properties"),
+            "assets_filters": obj.get("assets_filters")
         })
         return _obj
 

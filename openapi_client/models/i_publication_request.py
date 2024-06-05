@@ -36,7 +36,8 @@ class IPublicationRequest(BaseModel):
     subjects: Optional[List[ISubject]] = None
     collection: Optional[StrictStr] = None
     depth: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["id", "backgroundJobId", "url", "catalogId", "additionalLinks", "subjects", "collection", "depth"]
+    assets_filters: Optional[List[StrictStr]] = Field(default=None, alias="assetsFilters")
+    __properties: ClassVar[List[str]] = ["id", "backgroundJobId", "url", "catalogId", "additionalLinks", "subjects", "collection", "depth", "assetsFilters"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -76,6 +77,7 @@ class IPublicationRequest(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "id",
@@ -86,6 +88,7 @@ class IPublicationRequest(BaseModel):
             "subjects",
             "collection",
             "depth",
+            "assets_filters",
         ])
 
         _dict = self.model_dump(
@@ -142,6 +145,11 @@ class IPublicationRequest(BaseModel):
         if self.collection is None and "collection" in self.model_fields_set:
             _dict['collection'] = None
 
+        # set to None if assets_filters (nullable) is None
+        # and model_fields_set contains the field
+        if self.assets_filters is None and "assets_filters" in self.model_fields_set:
+            _dict['assetsFilters'] = None
+
         return _dict
 
     @classmethod
@@ -161,7 +169,8 @@ class IPublicationRequest(BaseModel):
             "additionalLinks": [Link.from_dict(_item) for _item in obj["additionalLinks"]] if obj.get("additionalLinks") is not None else None,
             "subjects": [ISubject.from_dict(_item) for _item in obj["subjects"]] if obj.get("subjects") is not None else None,
             "collection": obj.get("collection"),
-            "depth": obj.get("depth")
+            "depth": obj.get("depth"),
+            "assetsFilters": obj.get("assetsFilters")
         })
         return _obj
 

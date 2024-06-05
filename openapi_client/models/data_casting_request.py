@@ -43,7 +43,8 @@ class DataCastingRequest(BaseModel):
     depth: Optional[StrictInt] = None
     background_job_id: Optional[StrictStr] = None
     id: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["url", "catalog_id", "workspace_id", "processor_id", "additional_links", "subjects", "collection", "asset_filters", "path", "casting", "depth", "background_job_id", "id"]
+    assets_filters: Optional[List[StrictStr]] = None
+    __properties: ClassVar[List[str]] = ["url", "catalog_id", "workspace_id", "processor_id", "additional_links", "subjects", "collection", "asset_filters", "path", "casting", "depth", "background_job_id", "id", "assets_filters"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -133,6 +134,11 @@ class DataCastingRequest(BaseModel):
         if self.id is None and "id" in self.model_fields_set:
             _dict['id'] = None
 
+        # set to None if assets_filters (nullable) is None
+        # and model_fields_set contains the field
+        if self.assets_filters is None and "assets_filters" in self.model_fields_set:
+            _dict['assets_filters'] = None
+
         return _dict
 
     @classmethod
@@ -157,7 +163,8 @@ class DataCastingRequest(BaseModel):
             "casting": obj.get("casting"),
             "depth": obj.get("depth"),
             "background_job_id": obj.get("background_job_id"),
-            "id": obj.get("id")
+            "id": obj.get("id"),
+            "assets_filters": obj.get("assets_filters")
         })
         return _obj
 

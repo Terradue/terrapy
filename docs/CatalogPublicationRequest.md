@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **subjects** | [**List[Subject]**](Subject.md) | Gets or sets the list of subjects to include in the metadata document. | [optional] 
 **collection** | **str** | Gets or sets the collection name where the metadata will be published. | [optional] 
 **depth** | **int** | Gets or sets the depth of the metadata to publish.  0 means no publication, 1 means the root metadata document only, 2 means the metadata document and its children, and so on. | [optional] 
+**assets_filters** | **List[str]** |  | [optional] 
 
 ## Example
 

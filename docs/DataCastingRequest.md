@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **depth** | **int** |  | [optional] 
 **background_job_id** | **str** |  | [optional] 
 **id** | **str** |  | [optional] 
+**assets_filters** | **List[str]** |  | [optional] 
 
 ## Example
 
